@@ -5,14 +5,10 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("Basic Info")]
-    public GameManager gm;
-    public int id;
-    public string myName;
-    public int gender;
-    public int[] regards;
-    bool eliminated = false;
-
-    [Header("Voting Info")]
-    private int myVote;
-    private int voteStrength;
+    public GameManager gm; // management object
+    public int id; // character id
+    public string myName; // character name
+    public int gender; // 0 = male pronouns, 1 = female pronouns, 2 = neutral pronouns
+    public int[] regards; // stores opinions of other characters
+    bool eliminated = false; // has this character been eliminated from contention?
 }
