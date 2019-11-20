@@ -13,9 +13,27 @@ public class NPC : Character
         RoundReset();
     }
 
+    public void RandomizeAttitude()
+    {
+        foreach(Character subj in gm.characters)
+        {
+            if(subj.id != this.id)
+            {
+                int randomAttitude = Random.Range(-2, 3);
+                this.regards[subj.id] = randomAttitude * 5;
+            }
+        }
+    }
+
     public void RoundReset() // reset for next round of play
     {
         voteStrength = -1;
+    }
+
+    public void SetVote(int id, int str)
+    {
+        myVote = id;
+        voteStrength = str;
     }
 
     public void CompareVote(int proposer, int target, int targetID) // function for comparing various votes
