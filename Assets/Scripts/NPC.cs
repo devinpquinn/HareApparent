@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPC : Character
 {
-    [Header("Voting Info")]
     private int myVote; // id of current vote target
     private int voteStrength; // point strength of current vote deal
 
@@ -13,7 +12,7 @@ public class NPC : Character
         RoundReset();
     }
 
-    public void RandomizeAttitude()
+    public void RandomizeAttitude() // randomize starting attitudes toward other characters
     {
         foreach(Character subj in gm.characters)
         {
@@ -30,7 +29,7 @@ public class NPC : Character
         voteStrength = -1;
     }
 
-    public void SetVote(int id, int str)
+    public void SetVote(int id, int str) // update new chosen vote
     {
         myVote = id;
         voteStrength = str;

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [Header("Basic Info")]
     public GameManager gm; // management object
+    [Range(0, 5)]
     public int id; // character id
     public string myName; // character name
-    public int gender; // 0 = male pronouns, 1 = female pronouns, 2 = neutral pronouns
+    public Gender myGender;
     public int[] regards; // stores opinions of other characters
     bool eliminated = false; // has this character been eliminated from contention?
 
@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
         switch(form)
         {
             case 0:
-                if(gender == 0)
+                if(myGender == Gender.Male)
                 {
                     if(cap)
                     {
@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
                         return "he";
                     }
                 }
-                if (gender == 1)
+                if (myGender == Gender.Female)
                 {
                     if (cap)
                     {
@@ -39,7 +39,7 @@ public class Character : MonoBehaviour
                         return "she";
                     }
                 }
-                if (gender == 2)
+                if (myGender == Gender.Other)
                 {
                     if (cap)
                     {
@@ -52,7 +52,7 @@ public class Character : MonoBehaviour
                 }
                 break;
             case 1:
-                if (gender == 0)
+                if (myGender == Gender.Male)
                 {
                     if (cap)
                     {
@@ -63,7 +63,7 @@ public class Character : MonoBehaviour
                         return "him";
                     }
                 }
-                if (gender == 1)
+                if (myGender == Gender.Female)
                 {
                     if (cap)
                     {
@@ -74,7 +74,7 @@ public class Character : MonoBehaviour
                         return "her";
                     }
                 }
-                if (gender == 2)
+                if (myGender == Gender.Other)
                 {
                     if (cap)
                     {
@@ -87,7 +87,7 @@ public class Character : MonoBehaviour
                 }
                 break;
             case 2:
-                if (gender == 0)
+                if (myGender == Gender.Male)
                 {
                     if (cap)
                     {
@@ -98,7 +98,7 @@ public class Character : MonoBehaviour
                         return "his";
                     }
                 }
-                if (gender == 1)
+                if (myGender == Gender.Female)
                 {
                     if (cap)
                     {
@@ -109,7 +109,7 @@ public class Character : MonoBehaviour
                         return "hers";
                     }
                 }
-                if (gender == 2)
+                if (myGender == Gender.Other)
                 {
                     if (cap)
                     {
@@ -126,3 +126,5 @@ public class Character : MonoBehaviour
     }
     
 }
+
+public enum Gender {Male, Female, Other}

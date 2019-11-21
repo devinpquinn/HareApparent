@@ -22,18 +22,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ResetVotes() // sets each character's first vote choice at each round start
-    {
-        foreach (NPC currentChar in characters) // for each npc
-        {
-            int thisID = currentChar.id;
-            foreach (Character target in characters) // cycles through potential targets
-            {
-                currentChar.CompareVote(-1, currentChar.regards[target.id], target.id); // select most disliked character
-            }
-        }
-    }
-
     public void CalculateVotes() // precalculates NPCs' preferred moves before player phase
     {
         foreach(NPC currentChar in characters) // each npc
