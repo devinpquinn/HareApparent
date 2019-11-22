@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class NPC : Character
 {
-    private int myVote; // id of current vote target
-    private int voteStrength; // point strength of current vote deal
+    public int myVote; // id of current vote target
+    public int voteStrength; // point strength of current vote deal
 
     private void Start()
     {
-        RoundReset();
+        //RoundReset();
     }
 
     public void RandomizeAttitude() // randomize starting attitudes toward other characters
@@ -35,18 +35,6 @@ public class NPC : Character
         voteStrength = str;
     }
 
-    public int ShareVote(bool str) // for accessing current vote target
-    {
-        if(str)
-        {
-            return voteStrength;
-        }
-        else
-        {
-            return myVote;
-        }
-    }
-
     private int FindDisliked(int tried) // find most disliked among remaining, un-offered options
     {
         List<int> alreadyOffered = new List<int>();
@@ -56,7 +44,7 @@ public class NPC : Character
             lowest = 0;
             for (int i = 0; i < regards.Length; i++)
             {
-                if (!alreadyOffered.Contains(i) && i <= regards[lowest])
+                if (i != this.id && !alreadyOffered.Contains(i) && i <= regards[lowest] && !gm.characters[i].eliminated)
                 {
                     lowest = i;
                 }
@@ -70,7 +58,16 @@ public class NPC : Character
     public void OfferVote(NPC myPartner) // keep offering votes in descending order of personal preference until agreement is reached
     {
         int offers = 0;
-        CompareVote(this.id, myPartner.id, FindDisliked(offers));
+        while(offers < gm.characters.Length)
+        {
+            int myTarget = FindDisliked(offers);
+            if(CompareVote(myPartner.regards[this.id], myPartner.regards[myTarget], myTarget))
+            {
+                Debug.Log(myName + " convinces " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
+                break;
+            }
+            offers++;
+        }
     }
 
     public bool CompareVote(int proposer, int target, int targetID) // function for comparing various votes

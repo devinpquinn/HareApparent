@@ -43,20 +43,13 @@ public class GameManager : MonoBehaviour
         {
             if(currentChar is NPC && !currentChar.eliminated)
             {
-                int thisID = currentChar.id;
+                NPC selectedChar = currentChar as NPC;
+                int thisID = selectedChar.id;
                 foreach (Character partner in characters) // offers each other npc a series of deals
                 {
-                    if(partner is NPC && !partner.eliminated)
+                    if(partner is NPC && !partner.eliminated && partner.id != currentChar.id)
                     {
-                        int partnerID = partner.id;
-                        NPC myPartner = partner as NPC;
-                        foreach (Character target in characters) // offer deals
-                        {
-                            if (target.id != thisID && target.id != partnerID && !target.eliminated)
-                            {
-                                myPartner.CompareVote(myPartner.regards[currentChar.id], myPartner.regards[target.id], target.id); // partner considers deal
-                            }
-                        }
+                        selectedChar.OfferVote((NPC)partner);
                     }
                 }
             } 
@@ -70,7 +63,7 @@ public class GameManager : MonoBehaviour
             if(myChar is NPC)
             {
                 NPC thisChar = myChar as NPC;
-                Debug.Log(thisChar.myName + " is planning to vote for " + characters[thisChar.ShareVote(false)].myName + ". Conviction: " + thisChar.ShareVote(true).ToString());
+                Debug.Log(thisChar.myName + " is planning to vote for " + characters[thisChar.myVote].myName + ". Conviction: " + thisChar.voteStrength.ToString());
             }
         }
     }
