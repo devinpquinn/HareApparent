@@ -35,14 +35,52 @@ public class NPC : Character
         voteStrength = str;
     }
 
-    public void CompareVote(int proposer, int target, int targetID) // function for comparing various votes
+    public int ShareVote(bool str) // for accessing current vote target
+    {
+        if(str)
+        {
+            return voteStrength;
+        }
+        else
+        {
+            return myVote;
+        }
+    }
+
+    private int FindDisliked(int tried) // find most disliked among remaining, un-offered options
+    {
+        List<int> alreadyOffered = new List<int>();
+        int lowest = 0;
+        while (tried >= 0)
+        {
+            lowest = 0;
+            for (int i = 0; i < regards.Length; i++)
+            {
+                if (!alreadyOffered.Contains(i) && i <= regards[lowest])
+                {
+                    lowest = i;
+                }
+            }
+            alreadyOffered.Add(lowest);
+            tried -= 1;
+        }
+        return lowest;
+    }
+
+    public void OfferVote(NPC myPartner) // keep offering votes in descending order of personal preference until agreement is reached
+    {
+        int offers = 0;
+        CompareVote(this.id, myPartner.id, FindDisliked(offers));
+    }
+
+    public bool CompareVote(int proposer, int target, int targetID) // function for comparing various votes
     {
         int str = proposer - target;
         if(str > voteStrength)
         {
             myVote = targetID;
             voteStrength = str;
-            return;
+            return true;
         }
         if(str == voteStrength)
         {
@@ -51,9 +89,10 @@ public class NPC : Character
             {
                 myVote = targetID;
                 voteStrength = str;
-                return;
+                return true;
             }
         }
+        return false;
     }
 
 }

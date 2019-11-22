@@ -6,7 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public Character[] characters; // stores all characters in this game
 
-    public void SetupCharacters() // fills characters array
+    private void Start()
+    {
+        SetupCharacters();
+        CalculateVotes();
+        ShowVotes();
+    }
+
+    public void SetupCharacters() // fills characters array and randomizes attitudes
     {
         GameObject[] charsFound = GameObject.FindGameObjectsWithTag("Character");
         int charsNum = charsFound.Length;
@@ -20,23 +27,50 @@ public class GameManager : MonoBehaviour
                 thisChar.GetComponent<Character>().regards = new int[charsNum];
             }
         }
+        foreach(Character myChar in characters)
+        {
+            if(myChar is NPC)
+            {
+                NPC selected = myChar as NPC;
+                selected.RandomizeAttitude();
+            }
+        }
     }
 
     public void CalculateVotes() // precalculates NPCs' preferred moves before player phase
     {
-        foreach(NPC currentChar in characters) // each npc
+        foreach(Character currentChar in characters) // each npc
         {
-            int thisID = currentChar.id;
-            foreach(NPC partner in characters) // offers each other npc a series of deals
+            if(currentChar is NPC && !currentChar.eliminated)
             {
-                int partnerID = partner.id;
-                foreach(Character target in characters) // offer deals
+                int thisID = currentChar.id;
+                foreach (Character partner in characters) // offers each other npc a series of deals
                 {
-                    if(target.id != thisID && target.id != partnerID)
+                    if(partner is NPC && !partner.eliminated)
                     {
-                        partner.CompareVote(partner.regards[currentChar.id], partner.regards[target.id], target.id); // partner considers deal
+                        int partnerID = partner.id;
+                        NPC myPartner = partner as NPC;
+                        foreach (Character target in characters) // offer deals
+                        {
+                            if (target.id != thisID && target.id != partnerID && !target.eliminated)
+                            {
+                                myPartner.CompareVote(myPartner.regards[currentChar.id], myPartner.regards[target.id], target.id); // partner considers deal
+                            }
+                        }
                     }
                 }
+            } 
+        }
+    }
+
+    public void ShowVotes()
+    {
+        foreach(Character myChar in characters)
+        {
+            if(myChar is NPC)
+            {
+                NPC thisChar = myChar as NPC;
+                Debug.Log(thisChar.myName + " is planning to vote for " + characters[thisChar.ShareVote(false)].myName + ". Conviction: " + thisChar.ShareVote(true).ToString());
             }
         }
     }

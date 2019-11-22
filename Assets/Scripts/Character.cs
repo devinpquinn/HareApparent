@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     public string myName; // character name
     public Gender myGender;
     public int[] regards; // stores opinions of other characters
-    bool eliminated = false; // has this character been eliminated from contention?
+    public bool eliminated = false; // has this character been eliminated from contention?
 
     public string GetPronoun(int form, bool cap) // form = he/him/his, cap = capitalized?
     {

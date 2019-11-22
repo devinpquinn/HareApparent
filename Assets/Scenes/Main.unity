@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 289303474}
   m_Layer: 0
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,8 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 1032276103}
   id: 0
-  myName: 
-  gender: 0
+  myName: Devin
+  myGender: 0
   regards: 
 --- !u!1 &1032276101
 GameObject:
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 1216259052}
   m_Layer: 0
   m_Name: NPC2
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 1032276103}
   id: 2
-  myName: 
-  gender: 0
+  myName: Mackerel
+  myGender: 1
   regards: 
 --- !u!1 &1442451360
 GameObject:
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1657903154}
   m_Layer: 0
   m_Name: NPC1
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,8 +526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 1032276103}
   id: 1
-  myName: 
-  gender: 0
+  myName: Benedict
+  myGender: 0
   regards: 
 --- !u!1 &1935446157
 GameObject:
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 1935446158}
   m_Layer: 0
   m_Name: NPC3
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -561,8 +561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 1032276103}
   id: 3
-  myName: 
-  gender: 0
+  myName: Joshington
+  myGender: 0
   regards: 
 --- !u!212 &1935446159
 SpriteRenderer:
