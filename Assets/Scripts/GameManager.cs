@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetupCharacters();
+        NPC x = characters[1] as NPC;
+        NPC y = characters[2] as NPC;
+        x.OfferVote(y);
     }
 
     public void SetupCharacters() // fills characters array and randomizes attitudes
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
             {
                 NPC selected = myChar as NPC;
                 selected.RandomizeAttitude();
+                selected.RoundReset();
             }
         }
     }

@@ -26,7 +26,8 @@ public class NPC : Character
 
     public void RoundReset() // reset for next round of play
     {
-        voteStrength = -1;
+        myVote = FindDisliked(0, this.id);
+        voteStrength = 0 - regards[myVote] - 1;
     }
 
     public void SetVote(int id, int str) // update new chosen vote
@@ -35,7 +36,7 @@ public class NPC : Character
         voteStrength = str;
     }
 
-    public int FindDisliked(int tried) // find most disliked among remaining, un-offered options
+    public int FindDisliked(int tried, int partnerID) // find most disliked among remaining, un-offered options
     {
         List<int> alreadyTried = new List<int>();
         int minIndex = 0;
@@ -48,7 +49,7 @@ public class NPC : Character
             {
                 if (regards[i] <= minRegard)
                 {
-                    if (!alreadyTried.Contains(i) && i != this.id)
+                    if (!alreadyTried.Contains(i) && i != this.id && i != partnerID)
                     {
                         minIndex = i;
                         minRegard = regards[i];
@@ -58,20 +59,31 @@ public class NPC : Character
             tried--;
             alreadyTried.Add(minIndex);
         }
-        Debug.Log("Already tried: " + alreadyTried[0].ToString() + " and " + alreadyTried[1].ToString());
         return minIndex;
     }
 
     public void OfferVote(NPC myPartner) // keep offering votes in descending order of personal preference until agreement is reached
     {
         int offers = 0;
-        while(offers < regards.Length)
+        int remaining = -2;
+        foreach(Character scanned in gm.characters)
         {
-            int myTarget = FindDisliked(offers);
-            if(CompareVote(myPartner.regards[this.id], myPartner.regards[myTarget], myTarget))
+            if(!scanned.eliminated)
+            {
+                remaining++; // number of potential targets
+            }
+        }
+        while(offers < remaining)
+        {
+            int myTarget = FindDisliked(offers, myPartner.id);
+            if(myPartner.CompareVote(myPartner.regards[this.id], myPartner.regards[myTarget], myTarget))
             {
                 Debug.Log(myName + " convinces " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
                 break;
+            }
+            else
+            {
+                Debug.Log(myName + " fails to convince " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
             }
             offers++;
         }
