@@ -39,23 +39,26 @@ public class NPC : Character
     {
         List<int> alreadyTried = new List<int>();
         int minIndex = 0;
+        int minRegard = int.MaxValue;
         while(tried >= 0)
         {
             minIndex = 0;
+            minRegard = int.MaxValue;
             for (int i = 0; i < regards.Length; i++)
             {
-                if (regards[i] <= regards[minIndex])
+                if (regards[i] <= minRegard)
                 {
                     if (!alreadyTried.Contains(i) && i != this.id)
                     {
                         minIndex = i;
+                        minRegard = regards[i];
                     } 
                 }
             }
             tried--;
             alreadyTried.Add(minIndex);
         }
-        Debug.Log("Already tried: " + alreadyTried[0].ToString());
+        Debug.Log("Already tried: " + alreadyTried[0].ToString() + " and " + alreadyTried[1].ToString());
         return minIndex;
     }
 
