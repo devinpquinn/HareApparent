@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetupCharacters();
-        CalculateVotes();
-        ShowVotes();
+        NPC subj = characters[1] as NPC;
+        Debug.Log(subj.FindDisliked(1));
     }
 
     public void SetupCharacters() // fills characters array and randomizes attitudes

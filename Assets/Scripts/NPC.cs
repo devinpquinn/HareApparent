@@ -35,30 +35,34 @@ public class NPC : Character
         voteStrength = str;
     }
 
-    private int FindDisliked(int tried) // find most disliked among remaining, un-offered options
+    public int FindDisliked(int tried) // find most disliked among remaining, un-offered options
     {
-        List<int> alreadyOffered = new List<int>();
-        int lowest = 0;
-        while (tried >= 0)
+        List<int> alreadyTried = new List<int>();
+        int minIndex = 0;
+        while(tried >= 0)
         {
-            lowest = 0;
+            minIndex = 0;
             for (int i = 0; i < regards.Length; i++)
             {
-                if (i != this.id && !alreadyOffered.Contains(i) && i <= regards[lowest] && !gm.characters[i].eliminated)
+                if (regards[i] <= regards[minIndex])
                 {
-                    lowest = i;
+                    if (!alreadyTried.Contains(i) && i != this.id)
+                    {
+                        minIndex = i;
+                    } 
                 }
             }
-            alreadyOffered.Add(lowest);
-            tried -= 1;
+            tried--;
+            alreadyTried.Add(minIndex);
         }
-        return lowest;
+        Debug.Log("Already tried: " + alreadyTried[0].ToString());
+        return minIndex;
     }
 
     public void OfferVote(NPC myPartner) // keep offering votes in descending order of personal preference until agreement is reached
     {
         int offers = 0;
-        while(offers < gm.characters.Length)
+        while(offers < regards.Length)
         {
             int myTarget = FindDisliked(offers);
             if(CompareVote(myPartner.regards[this.id], myPartner.regards[myTarget], myTarget))
