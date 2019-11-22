@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetupCharacters();
-        NPC x = characters[1] as NPC;
-        NPC y = characters[2] as NPC;
-        x.OfferVote(y);
+        CalculateVotes();
+        ShowVotes();
     }
 
     public void SetupCharacters() // fills characters array and randomizes attitudes
@@ -65,7 +64,7 @@ public class GameManager : MonoBehaviour
             if(myChar is NPC)
             {
                 NPC thisChar = myChar as NPC;
-                Debug.Log(thisChar.myName + " is planning to vote for " + characters[thisChar.myVote].myName + ". Conviction: " + thisChar.voteStrength.ToString());
+                Debug.Log("<b> " + thisChar.myName + " is planning to vote for " + characters[thisChar.myVote].myName + ". Conviction: " + thisChar.voteStrength.ToString() + "</b>");
             }
         }
     }
