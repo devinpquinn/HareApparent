@@ -544,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363528918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2284747, y: 0.9866209, z: -0.0859375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 571678783}
@@ -598,7 +598,7 @@ MonoBehaviour:
   shouldStayOnScreen: 0
   textAudio: {fileID: 0}
   passAudio: {fileID: 0}
-  passWithMouse: 0
+  passWithMouse: 1
   passWithInputButton: Jump
   passWithKey: 0
   enablePass: 1
@@ -1002,7 +1002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &597313832323758263
 RectTransform:
   m_ObjectHideFlags: 0
