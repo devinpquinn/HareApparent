@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565fd263440bd45fa9ba0925c60f54f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startOnAwake: 1
+  startOnAwake: 0
   showWithDialog:
   - {fileID: 597313832323758262}
   textUIObj: {fileID: 597313833851806199}
@@ -589,15 +589,17 @@ MonoBehaviour:
   cutscenePosition: 0
   textSpeed: 50
   currentChar: 0
-  variables: []
+  variables:
+  - variableName: '*Name*'
+    variableValue: Steve
   shouldUsePhotos: 0
   characters: []
   UIPhoto: {fileID: 0}
   shouldStayOnScreen: 0
   textAudio: {fileID: 0}
   passAudio: {fileID: 0}
-  passWithMouse: 1
-  passWithInputButton: 
+  passWithMouse: 0
+  passWithInputButton: Jump
   passWithKey: 0
   enablePass: 1
   autoPass: 0
@@ -715,6 +717,8 @@ GameObject:
   - component: {fileID: 1657903153}
   - component: {fileID: 1657903152}
   - component: {fileID: 1657903154}
+  - component: {fileID: 1657903155}
+  - component: {fileID: 1657903156}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: Character
@@ -804,6 +808,46 @@ MonoBehaviour:
   eliminated: 0
   myVote: 0
   voteStrength: 0
+--- !u!61 &1657903155
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657903151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34, y: 0.44}
+    newSize: {x: 0.96, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34, y: 0.44}
+  m_EdgeRadius: 0
+--- !u!114 &1657903156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657903151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f578e3a5244a2a84494139b6e1348642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTalk: {fileID: 1363528920}
+  myName: Benedict
 --- !u!1 &1935446157
 GameObject:
   m_ObjectHideFlags: 0
