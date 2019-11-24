@@ -7,9 +7,12 @@ public class NPCTalk : MonoBehaviour
     public RPGTalk myTalk;
     public string myName;
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-        myTalk.variables[0].variableValue = myName.ToString();
-        myTalk.NewTalk("1", "2");
+        if(!myTalk.isPlaying)
+        {
+            myTalk.variables[0].variableValue = myName.ToString();
+            myTalk.NewTalk("1", "2");
+        }
     }
 }
