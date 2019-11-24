@@ -7,6 +7,11 @@ public class NPCTalk : MonoBehaviour
     public RPGTalk myTalk;
     public string myName;
 
+    private void Start()
+    {
+        myName = this.GetComponent<NPC>().myName;
+    }
+
     private void OnMouseUp()
     {
         if(!myTalk.isPlaying)

@@ -5,12 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Character[] characters; // stores all characters in this game
+    public RPGTalk myTalk;
 
     private void Start()
     {
         SetupCharacters();
         CalculateVotes();
         ShowVotes();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            myTalk.EndTalk();
+        }
     }
 
     public void SetupCharacters() // fills characters array and randomizes attitudes
