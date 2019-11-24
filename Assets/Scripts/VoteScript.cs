@@ -6,7 +6,7 @@ public class VoteScript : MonoBehaviour
 {
     public RPGTalk myTalk;
 
-    private void OnMouseUp()
+    private void OnMouseUp() // begin conversation
     {
         if(!myTalk.isPlaying)
         {

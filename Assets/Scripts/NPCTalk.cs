@@ -12,7 +12,7 @@ public class NPCTalk : MonoBehaviour
         myName = this.GetComponent<NPC>().myName;
     }
 
-    private void OnMouseUp()
+    private void OnMouseUp() // begin conversation
     {
         if(!myTalk.isPlaying)
         {

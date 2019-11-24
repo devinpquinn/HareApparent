@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     public Gender myGender;
     public int[] regards; // stores opinions of other characters
     public bool eliminated = false; // has this character been eliminated from contention?
+    bool voted = false; // has this character already voted in this round?
+    int votedAgainst = 0; // how many votes have been cast against this character in this round?
 
     public string GetPronoun(int form, bool cap) // form = he/him/his, cap = capitalized?
     {
@@ -123,6 +125,18 @@ public class Character : MonoBehaviour
                 break;
         }
         return "[MISSING]";
+    }
+
+    public void RoundReset() // reset for next round of play
+    {
+        voted = false;
+        votedAgainst = 0;
+        if(this is NPC && !eliminated)
+        {
+            NPC amNPC = this as NPC;
+            amNPC.myVote = amNPC.FindDisliked(0, this.id);
+            amNPC.voteStrength = 0 - regards[amNPC.myVote] - 1;
+        }
     }
     
 }

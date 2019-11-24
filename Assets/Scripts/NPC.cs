@@ -24,12 +24,6 @@ public class NPC : Character
         }
     }
 
-    public void RoundReset() // reset for next round of play
-    {
-        myVote = FindDisliked(0, this.id);
-        voteStrength = 0 - regards[myVote] - 1;
-    }
-
     public void SetVote(int id, int str) // update new chosen vote
     {
         myVote = id;
