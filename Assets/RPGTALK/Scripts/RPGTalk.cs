@@ -939,6 +939,15 @@ public class RPGTalk : MonoBehaviour {
             //Ok! Let's isolate its string
             line = line.Substring(initialBracket+8);
 
+            //Stuff added by Devin Quinn
+            for (int i = 0; i < variables.Length; i++)
+            {
+                if (line.Contains(variables[i].variableName))
+                {
+                    line = line.Replace(variables[i].variableName, variables[i].variableValue);
+                }
+            }
+
             //Add it to the last question found
             if (questions.Count > 0) {
                 questions [questions.Count - 1].choices.Add (line);

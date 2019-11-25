@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         return added;
     }
 
-    public void ConductVote()
+    public void ConductVote() // cycle through each character's vote
     {
         for(int i = 0; i < characters.Length; i++)
         {
