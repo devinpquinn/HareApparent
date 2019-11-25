@@ -7,11 +7,6 @@ public class NPC : Character
     public int myVote; // id of current vote target
     public int voteStrength; // point strength of current vote deal
 
-    private void Start()
-    {
-        //RoundReset();
-    }
-
     public void RandomizeAttitude() // randomize starting attitudes toward other characters
     {
         foreach(Character subj in gm.characters)
@@ -109,6 +104,10 @@ public class NPC : Character
     {
         gm.characters[myVote].votedAgainst++;
         this.voted = true;
+        myTalk.variables[0].variableValue = myName;
+        myTalk.variables[1].variableValue = gm.characters[myVote].myName;
+        gm.characters[myVote].regards[id] -= 20;
+        myTalk.NewTalk("40", "40", txt, gm.OnVote);
     }
 
 }

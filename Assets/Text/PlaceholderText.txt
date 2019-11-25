@@ -9,30 +9,32 @@ SpeakerName:All right. Come back and speak to me when you're ready.
 
 SpeakerName:Very well.
 SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-SpeakerName:[question=Vote]You're up, SpeakerName. Who do you choose for elimination?
+SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for elimination?
 [choice]NPC1
 [choice]NPC2
 [choice]NPC3
 [choice]NPC4
 [choice]NPC5
 
-The Professor:Very well.
-The Professor:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-The Professor:[question=Vote]You're up, SpeakerName. Who do you choose for elimination?
+SpeakerName:Very well.
+SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
+SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for elimination?
 [choice]NPC1
 [choice]NPC2
 [choice]NPC3
 [choice]NPC4
 
-The Professor:Very well.
-The Professor:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-The Professor:[question=3Remaining]You're up, SpeakerName. Who do you choose for elimination?
+SpeakerName:Very well.
+SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
+SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for elimination?
 [choice]NPC1
 [choice]NPC2
 [choice]NPC3
 
-The Professor:Very well.
-The Professor:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-The Professor:[question=2Remaining]You're up, SpeakerName. Who do you choose for elimination?
+SpeakerName:Very well.
+SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
+SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for elimination?
 [choice]NPC1
 [choice]NPC2
+
+SpeakerName:I cast my vote for TargetName.

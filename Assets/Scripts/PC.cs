@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class PC : Character
 {
-    private RPGTalk myTalk;
-
-    private void Start()
-    {
-        myTalk = gm.myTalk;
-    }
 
     public void PlayerVote() // player casts vote
     {
+        voted = true;
         switch(gm.SetVoteOptions())
         {
             case 2:
-                myTalk.NewTalk("34", "38");
+                myTalk.NewTalk("34", "38", txt, gm.OnVote);
                 break;
             case 3:
-                myTalk.NewTalk("27", "32");
+                myTalk.NewTalk("27", "32", txt, gm.OnVote);
                 break;
             case 4:
-                myTalk.NewTalk("19", "25");
+                myTalk.NewTalk("19", "25", txt, gm.OnVote);
                 break;
             case 5:
-                myTalk.NewTalk("10", "17");
+                myTalk.NewTalk("10", "17", txt, gm.OnVote);
                 break;
         }
     }

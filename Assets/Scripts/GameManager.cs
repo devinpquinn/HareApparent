@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,11 +9,36 @@ public class GameManager : MonoBehaviour
     public RPGTalk myTalk;
     public bool locked = false; // is control taken away from the player?
 
+    public UnityEvent OnVote;
+
     private void Start()
     {
+        myTalk.OnMadeChoice += OnMadeChoice;
         SetupCharacters();
         CalculateVotes();
         ShowVotes();
+    }
+
+    private void OnMadeChoice(string questionID, int choiceNumber)
+    {
+        switch (questionID)
+        {
+            case "ReadyToVote":
+                if (choiceNumber == 0)
+                {
+                    ConductVote();
+                }
+                break;
+            case "Vote":
+                Debug.Log("Voted for #" + choiceNumber);
+                myTalk.variables[0].variableValue = characters[0].myName;
+                Character targeted = characters[1 + choiceNumber];
+                myTalk.variables[1].variableValue = targeted.myName;
+                targeted.votedAgainst++;
+                targeted.regards[0] -= 20;
+                myTalk.NewTalk("40", "40");
+                break;
+        }
     }
 
     public void SetupCharacters() // fills characters array and randomizes attitudes
@@ -88,23 +114,32 @@ public class GameManager : MonoBehaviour
 
     public void ConductVote() // cycle through each character's vote
     {
+        
         for(int i = 0; i < characters.Length; i++)
         {
             Character selectedChar = characters[i];
-            if(!selectedChar.eliminated)
+            if(!selectedChar.eliminated && !selectedChar.voted)
             {
+                myTalk.variables[1].variableValue = selectedChar.myName;
                 if (selectedChar is PC)
                 {
                     PC playerChar = selectedChar as PC;
                     playerChar.PlayerVote();
+                    break;
                 }
                 else if (selectedChar is NPC)
                 {
                     NPC npcChar = selectedChar as NPC;
                     npcChar.CastVote();
+                    break;
                 }
             }
         }
+    }  
+
+    public void TallyVote()
+    {
+        Debug.Log("Tallying votes");
     }
 
 }

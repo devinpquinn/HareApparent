@@ -212,6 +212,7 @@ MonoBehaviour:
   eliminated: 0
   voted: 0
   votedAgainst: 0
+  txt: {fileID: 0}
 --- !u!1 &571678782
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +528,22 @@ MonoBehaviour:
   characters: []
   myTalk: {fileID: 1363528920}
   locked: 0
+  OnVote:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1032276103}
+        m_MethodName: ConductVote
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1344233322
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +760,7 @@ MonoBehaviour:
     follow: {fileID: 0}
     followOffset: {x: 0, y: 0, z: 0}
     animatorOverwrite: {fileID: 0}
-  - character: {fileID: 11400000, guid: 8d3ac950b520acf47a1030696373932b, type: 2}
+  - character: {fileID: 11400000, guid: 26a49afe814e8b94188bba20d7052acf, type: 2}
     follow: {fileID: 0}
     followOffset: {x: 0, y: 0, z: 0}
     animatorOverwrite: {fileID: 0}
@@ -1044,6 +1061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: id
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086819432088946024, guid: f280a16f32cdc394ba96b4ff4e908b22,
+        type: 3}
+      propertyPath: eliminated
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1086819432088946030, guid: f280a16f32cdc394ba96b4ff4e908b22,
         type: 3}
