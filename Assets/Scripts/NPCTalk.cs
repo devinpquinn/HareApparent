@@ -15,10 +15,23 @@ public class NPCTalk : MonoBehaviour
 
     private void OnMouseUp() // begin conversation
     {
-        if(!myTalk.isPlaying && !gm.locked)
+        if(!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
         {
             myTalk.variables[0].variableValue = myName.ToString();
             myTalk.NewTalk("1", "2");
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (!myTalk.dialogerObj.activeInHierarchy)
+        {
+            this.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        this.transform.localScale = new Vector3(5, 5, 5);
     }
 }

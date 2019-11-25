@@ -20,9 +20,22 @@ public class VoteScript : MonoBehaviour
         }
     }
 
+    private void OnMouseEnter()
+    {
+        if (!myTalk.dialogerObj.activeInHierarchy)
+        {
+            this.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        this.transform.localScale = new Vector3(5, 5, 5);
+    }
+
     private void OnMouseUp() // begin conversation
     {
-        if(!myTalk.isPlaying && !gm.locked)
+        if(!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
         {
             myTalk.NewTalk("4", "6");
         }  

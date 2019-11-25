@@ -2,7 +2,7 @@ SpeakerName:Hello there!
 SpeakerName:My name is SpeakerName. Nice to meet you!
 
 The Professor:[question=ReadyToVote]Are you ready to begin the elimination phase?
-[choice]Yes, I'm ready. SpeakerName
+[choice]Yes, I'm ready.
 [choice]No, I need more time.[newtalk start=8 break=8]
 
 The Professor:All right. Come back and speak to me when you're ready.
