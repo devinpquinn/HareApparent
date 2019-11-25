@@ -105,4 +105,10 @@ public class NPC : Character
         return false;
     }
 
+    public void CastVote()
+    {
+        gm.characters[myVote].votedAgainst++;
+        this.voted = true;
+    }
+
 }

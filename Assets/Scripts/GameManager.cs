@@ -15,14 +15,6 @@ public class GameManager : MonoBehaviour
         ShowVotes();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            myTalk.EndTalk();
-        }
-    }
-
     public void SetupCharacters() // fills characters array and randomizes attitudes
     {
         GameObject[] charsFound = GameObject.FindGameObjectsWithTag("Character");
@@ -75,6 +67,42 @@ public class GameManager : MonoBehaviour
             {
                 NPC thisChar = myChar as NPC;
                 Debug.Log("<b> " + thisChar.myName + " is planning to vote for " + characters[thisChar.myVote].myName + ". Conviction: " + thisChar.voteStrength.ToString() + "</b>");
+            }
+        }
+    } // lists chosen votes for debugging
+
+    public int SetVoteOptions() // setup remaining characters as dialogue choices
+    {
+        int added = 0;
+        for(int i = 0; i < characters.Length; i++)
+        {
+            Character thisChar = characters[i];
+            if(thisChar is NPC && !thisChar.eliminated)
+            {
+                myTalk.variables[2 + added].variableValue = thisChar.myName;
+                added++;
+            }
+        }
+        return added;
+    }
+
+    public void ConductVote()
+    {
+        for(int i = 0; i < characters.Length; i++)
+        {
+            Character selectedChar = characters[i];
+            if(!selectedChar.eliminated)
+            {
+                if (selectedChar is PC)
+                {
+                    PC playerChar = selectedChar as PC;
+                    playerChar.PlayerVote();
+                }
+                else if (selectedChar is NPC)
+                {
+                    NPC npcChar = selectedChar as NPC;
+                    npcChar.CastVote();
+                }
             }
         }
     }

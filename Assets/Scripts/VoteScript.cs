@@ -16,7 +16,7 @@ public class VoteScript : MonoBehaviour
     {
         if(questionID == "ReadyToVote" && choiceNumber == 0)
         {
-            myTalk.NewTalk("8", "9");
+            gm.ConductVote();
         }
     }
 

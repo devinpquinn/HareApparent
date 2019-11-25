@@ -11,8 +11,8 @@ public class Character : MonoBehaviour
     public Gender myGender;
     public int[] regards; // stores opinions of other characters
     public bool eliminated = false; // has this character been eliminated from contention?
-    bool voted = false; // has this character already voted in this round?
-    int votedAgainst = 0; // how many votes have been cast against this character in this round?
+    public bool voted = false; // has this character already voted in this round?
+    public int votedAgainst = 0; // how many votes have been cast against this character in this round?
 
     public string GetPronoun(int form, bool cap) // form = he/him/his, cap = capitalized?
     {
