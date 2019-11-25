@@ -1671,7 +1671,7 @@ public class RPGTalk : MonoBehaviour {
                             int choiceNumber = i;
                             newChoiceBtn.onClick.AddListener (delegate{MadeAChoice (q.questionID, choiceNumber, thisText);});
                             if (i == 0) {
-                                StartCoroutine(SelectButton(newChoiceBtn));
+                                //StartCoroutine(SelectButton(newChoiceBtn));
                             }
                         } else {
                             Debug.LogWarning ("RPGTalk can only put the choice's text correctly if choicePrefab is a button with a child of type Text.");
