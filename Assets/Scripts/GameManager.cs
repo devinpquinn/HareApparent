@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        TallyVote();
     }  
 
     public void TallyVote()
