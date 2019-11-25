@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Character[] characters; // stores all characters in this game
     public RPGTalk myTalk;
+    public bool locked = false; // is control taken away from the player?
 
     private void Start()
     {

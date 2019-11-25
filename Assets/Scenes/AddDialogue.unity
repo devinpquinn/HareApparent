@@ -406,6 +406,11 @@ PrefabInstance:
       propertyPath: myName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1086819432088946030, guid: f280a16f32cdc394ba96b4ff4e908b22,
+        type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1032276103}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f280a16f32cdc394ba96b4ff4e908b22, type: 3}
 --- !u!1 &1004959526
@@ -519,6 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters: []
   myTalk: {fileID: 1363528920}
+  locked: 0
 --- !u!1 &1344233322
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTalk: {fileID: 1363528920}
+  gm: {fileID: 1032276103}
 --- !u!212 &1344233324
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -906,6 +913,11 @@ PrefabInstance:
       propertyPath: myName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1086819432088946030, guid: f280a16f32cdc394ba96b4ff4e908b22,
+        type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1032276103}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f280a16f32cdc394ba96b4ff4e908b22, type: 3}
 --- !u!114 &597313832323758260
@@ -1052,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &597313832579500230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1395,6 +1407,11 @@ PrefabInstance:
       propertyPath: myName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1086819432088946030, guid: f280a16f32cdc394ba96b4ff4e908b22,
+        type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1032276103}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f280a16f32cdc394ba96b4ff4e908b22, type: 3}
 --- !u!222 &3740638755169024273
