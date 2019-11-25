@@ -668,14 +668,14 @@ public class RPGTalk : MonoBehaviour {
         
         RpgtalkElement newElement = new RpgtalkElement();
 
-        newElement.originalSpeakerName = line;
-
         //replace any variable that may exist on the text
         for (int i = 0; i < variables.Length; i++) {
             if (line.Contains (variables[i].variableName)) {
                 line = line.Replace (variables[i].variableName, variables[i].variableValue);
             }
         }
+
+        newElement.originalSpeakerName = line;
 
         //If we want to show the dialoger's name, slipt the line at the ':'
         if (dialoger) {

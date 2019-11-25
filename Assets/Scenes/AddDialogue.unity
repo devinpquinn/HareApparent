@@ -560,6 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTalk: {fileID: 1363528920}
   gm: {fileID: 1032276103}
+  myName: The Professor
 --- !u!212 &1344233324
 SpriteRenderer:
   m_ObjectHideFlags: 0

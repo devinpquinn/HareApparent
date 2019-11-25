@@ -11,9 +11,8 @@ public class PC : Character
         myTalk = gm.myTalk;
     }
 
-    public void PlayerVote()
+    public void PlayerVote() // player casts vote
     {
-        myTalk.variables[0].variableValue = myName;
         switch(gm.SetVoteOptions())
         {
             case 2:

@@ -6,17 +6,23 @@ public class VoteScript : MonoBehaviour
 {
     public RPGTalk myTalk;
     public GameManager gm;
+    public string myName;
 
     private void Start()
     {
-        myTalk.OnMadeChoice += MyTalk_OnMadeChoice;
+        myTalk.OnMadeChoice += OnMadeChoice;
     }
 
-    private void MyTalk_OnMadeChoice(string questionID, int choiceNumber)
+    private void OnMadeChoice(string questionID, int choiceNumber)
     {
-        if(questionID == "ReadyToVote" && choiceNumber == 0)
+        switch(questionID)
         {
-            gm.ConductVote();
+            case "ReadyToVote":
+                if(choiceNumber == 0)
+                {
+                    gm.ConductVote();
+                }
+                break;
         }
     }
 
@@ -37,6 +43,7 @@ public class VoteScript : MonoBehaviour
     {
         if(!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
         {
+            myTalk.variables[0].variableValue = myName;
             myTalk.NewTalk("4", "6");
         }  
     }

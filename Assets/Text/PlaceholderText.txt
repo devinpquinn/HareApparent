@@ -1,15 +1,15 @@
 SpeakerName:Hello there!
 SpeakerName:My name is SpeakerName. Nice to meet you!
 
-The Professor:[question=ReadyToVote]Are you ready to begin the elimination phase?
+SpeakerName:[question=ReadyToVote]Are you ready to begin the elimination phase?
 [choice]Yes, I'm ready.
 [choice]No, I need more time.[newtalk start=8 break=8]
 
-The Professor:All right. Come back and speak to me when you're ready.
+SpeakerName:All right. Come back and speak to me when you're ready.
 
-The Professor:Very well.
-The Professor:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-The Professor:[question=5Remaining]You're up, SpeakerName. Who do you choose for elimination?
+SpeakerName:Very well.
+SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
+SpeakerName:[question=Vote]You're up, SpeakerName. Who do you choose for elimination?
 [choice]NPC1
 [choice]NPC2
 [choice]NPC3
@@ -18,7 +18,7 @@ The Professor:[question=5Remaining]You're up, SpeakerName. Who do you choose for
 
 The Professor:Very well.
 The Professor:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-The Professor:[question=4Remaining]You're up, SpeakerName. Who do you choose for elimination?
+The Professor:[question=Vote]You're up, SpeakerName. Who do you choose for elimination?
 [choice]NPC1
 [choice]NPC2
 [choice]NPC3
