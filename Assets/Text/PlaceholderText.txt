@@ -2,12 +2,10 @@
 *Name*:My name is *Name*. Nice to meet you!
 
 The Professor:[question=ReadyToVote]Are you ready to begin the elimination phase?
-[choice]Yes, I'm ready[newtalk start=8 break=9]
-[choice]No, I need more time[newtalk start=11 break=11]
+[choice]Yes, I'm ready.
+[choice]No, I need more time.[newtalk start=11 break=11]
 
 The Professor:Very well.
 The Professor:Everyone, it's time to vote! Who do you wish to eliminate from contention?
 
 The Professor:All right. Come back and speak to me when you're ready.
-
-The Professor:I'll call on you one by one, and you'll speak your votes aloud.
