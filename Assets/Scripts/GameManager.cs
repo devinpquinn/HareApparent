@@ -153,7 +153,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("Game Over");
+        locked = true;
+        gameOver.SetActive(true);
     } // finish game
 
     public void ConductFinalVote() // conduct final vote
@@ -212,8 +213,7 @@ public class GameManager : MonoBehaviour
     {
         if(toEliminate == 0)
         {
-            locked = true;
-            gameOver.gameObject.SetActive(true);
+            EndGame();
         }
         else
         {
