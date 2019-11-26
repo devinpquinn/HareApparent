@@ -44,6 +44,17 @@ The Professor:That's everyone. With the votes as they stand...
 The Professor:TargetName has been eliminated.
 
 The Professor:That's everyone... it seems we have a tie.
-The Professor: Between SpeakerName.
-The Professor: It falls to me to break the tie. I choose to eliminate...
-The Professor: TargetName.
+The Professor:Between SpeakerName.
+The Professor:It falls to me to break the tie. I choose to eliminate...
+The Professor:TargetName.
+
+
+The Professor:And with that, only two remain.
+The Professor:The winner shall be chosen by those already eliminated.
+The Professor:Go ahead now, name your pick.
+The Professor:Remember, you are naming the winner, not the runner-up.
+
+SpeakerName:I choose to support TargetName's claim.
+
+The Professor:It seems a decision has been reached.
+The Professor:TargetName is the ultimate winner.

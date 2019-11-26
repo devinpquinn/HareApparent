@@ -110,4 +110,14 @@ public class NPC : Character
         myTalk.NewTalk("40", "41", txt, gm.OnVote);
     }
 
+    public void CastFinalVote()
+    {
+        myVote = FindDisliked(1, id);
+        gm.characters[myVote].votedAgainst++;
+        this.voted = true;
+        myTalk.variables[0].variableValue = myName;
+        myTalk.variables[1].variableValue = gm.characters[myVote].myName;
+        myTalk.NewTalk("57", "57", txt, gm.OnFinalVote);
+    }
+
 }

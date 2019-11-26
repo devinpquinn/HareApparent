@@ -8,10 +8,13 @@ public class GameManager : MonoBehaviour
     public Character[] characters; // stores all characters in this game
     public RPGTalk myTalk;
     public bool locked = false; // is control taken away from the player?
+    private int roundNum = 1;
     private int toEliminate;
 
     public UnityEvent OnVote;
     public UnityEvent OnVoteEnd;
+    public UnityEvent OnFinalVote;
+    public UnityEvent OnFinalResult;
 
     private void Start()
     {
@@ -33,7 +36,16 @@ public class GameManager : MonoBehaviour
                 break;
             case "Vote":
                 myTalk.variables[0].variableValue = characters[0].myName;
-                Character targeted = characters[1 + choiceNumber];
+                string chosenName = myTalk.variables[2 + choiceNumber].variableValue;
+                Character targeted = characters[0];
+                foreach(Character nameCheck in characters)
+                {
+                    if(nameCheck.myName.Equals(chosenName))
+                    {
+                        targeted = nameCheck;
+                    }
+                }
+                Debug.Log("Player voted for: " + targeted.myName);
                 myTalk.variables[1].variableValue = targeted.myName;
                 targeted.votedAgainst++;
                 targeted.regards[0] -= 20;
@@ -65,16 +77,26 @@ public class GameManager : MonoBehaviour
                 selected.RoundReset();
             }
         }
+        roundNum = 1;
     }
 
-    public void ResetVotes()
+    public void ResetVotes() // recalculate votes
     {
-        foreach(Character thisChar in characters)
+        roundNum++;
+        if(roundNum <= characters.Length - 2) 
         {
-            thisChar.RoundReset();
+            foreach (Character thisChar in characters)
+            {
+                thisChar.RoundReset();
+            }
+            CalculateVotes();
+            locked = false;
         }
-        CalculateVotes();
-        locked = false;
+        else
+        {
+            Debug.Log("Down to final two");
+            myTalk.NewTalk("52", "55", myTalk.txtToParse, OnFinalVote);
+        }
     }
 
     public void CalculateVotes() // precalculates NPCs' preferred moves before player phase
@@ -96,7 +118,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ShowVotes()
+    public void ShowVotes() // lists chosen votes for debugging
     {
         foreach(Character myChar in characters)
         {
@@ -106,7 +128,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("<b> " + thisChar.myName + " is planning to vote for " + characters[thisChar.myVote].myName + ". Conviction: " + thisChar.voteStrength.ToString() + "</b>");
             }
         }
-    } // lists chosen votes for debugging
+    } 
 
     public int SetVoteOptions() // setup remaining characters as dialogue choices
     {
@@ -121,6 +143,34 @@ public class GameManager : MonoBehaviour
             }
         }
         return added;
+    }
+
+    public void EndGame()
+    {
+        Debug.Log("Game Over");
+    } // finish game
+
+    public void ConductFinalVote() // conduct final vote
+    {
+        bool doneVoting = true;
+        foreach (Character selectedChar in characters)
+        {
+            if (selectedChar.eliminated && !selectedChar.voted)
+            {
+                selectedChar.GetComponent<Animator>().SetBool("elim", false);
+                doneVoting = false;
+                if (selectedChar is NPC)
+                {
+                    NPC npcChar = selectedChar as NPC;
+                    npcChar.CastFinalVote();
+                    break;
+                }
+            }
+        }
+        if (doneVoting)
+        {
+            FinalTallyVote();
+        }
     }
 
     public void ConductVote() // cycle through each character's vote
@@ -220,5 +270,30 @@ public class GameManager : MonoBehaviour
             myTalk.NewTalk("46", "49", myTalk.txtToParse, OnVoteEnd);
         }
     }
+
+    public void FinalTallyVote()
+    {
+        Character[] finalists = new Character[2];
+        int added = 0;
+        foreach(Character finalChar in characters)
+        {
+            if(!finalChar.eliminated)
+            {
+                finalists[0 + added] = finalChar;
+                added++;
+            }
+        }
+        if(finalists[0].votedAgainst > finalists[1].votedAgainst)
+        {
+            toEliminate = finalists[0].id;
+            myTalk.variables[1].variableValue = finalists[0].myName;
+        }
+        else
+        {
+            toEliminate = finalists[1].id;
+            myTalk.variables[1].variableValue = finalists[1].myName;
+        }
+        myTalk.NewTalk("59", "60", myTalk.txtToParse, OnFinalResult);
+    } // resolve final vote
 
 }
