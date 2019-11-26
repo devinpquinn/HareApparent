@@ -212,6 +212,7 @@ MonoBehaviour:
   eliminated: 0
   voted: 0
   votedAgainst: 0
+  myTalk: {fileID: 0}
   txt: {fileID: 0}
 --- !u!1 &571678782
 GameObject:
@@ -544,6 +545,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnVoteEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1032276103}
+        m_MethodName: Eliminate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1344233322
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +789,7 @@ MonoBehaviour:
   shouldStayOnScreen: 0
   textAudio: {fileID: 0}
   passAudio: {fileID: 0}
-  passWithMouse: 0
+  passWithMouse: 1
   passWithInputButton: Jump
   passWithKey: 0
   enablePass: 1
@@ -1675,6 +1692,11 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1032276103}
+    - target: {fileID: 1086819432088946026, guid: f280a16f32cdc394ba96b4ff4e908b22,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f280a16f32cdc394ba96b4ff4e908b22, type: 3}
 --- !u!222 &3740638755169024273

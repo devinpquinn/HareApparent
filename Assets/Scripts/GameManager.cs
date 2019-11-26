@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
     public Character[] characters; // stores all characters in this game
     public RPGTalk myTalk;
     public bool locked = false; // is control taken away from the player?
+    private int toEliminate;
 
     public UnityEvent OnVote;
+    public UnityEvent OnVoteEnd;
 
     private void Start()
     {
@@ -30,13 +32,12 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "Vote":
-                Debug.Log("Voted for #" + choiceNumber);
                 myTalk.variables[0].variableValue = characters[0].myName;
                 Character targeted = characters[1 + choiceNumber];
                 myTalk.variables[1].variableValue = targeted.myName;
                 targeted.votedAgainst++;
                 targeted.regards[0] -= 20;
-                myTalk.NewTalk("40", "40");
+                myTalk.NewTalk("41", "41");
                 break;
         }
     }
@@ -114,12 +115,12 @@ public class GameManager : MonoBehaviour
 
     public void ConductVote() // cycle through each character's vote
     {
-        
-        for(int i = 0; i < characters.Length; i++)
+        bool doneVoting = true;
+        foreach(Character selectedChar in characters)
         {
-            Character selectedChar = characters[i];
             if(!selectedChar.eliminated && !selectedChar.voted)
             {
+                doneVoting = false;
                 myTalk.variables[1].variableValue = selectedChar.myName;
                 if (selectedChar is PC)
                 {
@@ -135,12 +136,75 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        TallyVote();
+        if(doneVoting)
+        {
+            TallyVote();
+        }
     }  
 
-    public void TallyVote()
+    public void Eliminate()
     {
-        Debug.Log("Tallying votes");
+        characters[toEliminate].eliminated = true;
+        characters[toEliminate].GetComponent<Animator>().SetBool("elim", true);
+    }
+
+    public void TallyVote() // resolve votes cast
+    {
+        int highestIndex = 0;
+        bool tied = false;
+        foreach(Character thisChar in characters)
+        {
+            if(thisChar.votedAgainst > characters[highestIndex].votedAgainst)
+            {
+                highestIndex = thisChar.id;
+                tied = false;
+            }
+            else if(thisChar.votedAgainst == characters[highestIndex].votedAgainst)
+            {
+                tied = true;
+            }
+        }
+        if(!tied)
+        {
+            toEliminate = highestIndex;
+            myTalk.variables[1].variableValue = characters[highestIndex].myName;
+            myTalk.NewTalk("43", "44", myTalk.txtToParse, OnVoteEnd);
+        }
+        else
+        {
+            myTalk.variables[0].variableValue = "";
+            List<int> tiedIndexList = new List<int>();
+            List<Character> tiedCharList = new List<Character>();
+            int numTied = 0;
+            foreach (Character tiedChar in characters)
+            {
+                if (tiedChar.votedAgainst == characters[highestIndex].votedAgainst)
+                {
+                    numTied++;
+                    tiedIndexList.Add(tiedChar.id);
+                    tiedCharList.Add(tiedChar);
+                }
+            }
+            for(int i = 0; i < tiedCharList.Count; i++)
+            {
+                string nameToAdd = tiedCharList[i].myName;
+                myTalk.variables[0].variableValue += nameToAdd;
+
+                if (numTied == 2)
+                {
+                    myTalk.variables[0].variableValue += ", and ";
+                }
+                else if (numTied > 2)
+                {
+                    myTalk.variables[0].variableValue += ", ";
+                }   
+                numTied--;
+            }
+            int randomPick = Random.Range(0, tiedCharList.Count);
+            toEliminate = tiedCharList[randomPick].id;
+            myTalk.variables[1].variableValue = tiedCharList[randomPick].myName;
+            myTalk.NewTalk("46", "49", myTalk.txtToParse, OnVoteEnd);
+        }
     }
 
 }

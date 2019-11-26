@@ -107,7 +107,7 @@ public class NPC : Character
         myTalk.variables[0].variableValue = myName;
         myTalk.variables[1].variableValue = gm.characters[myVote].myName;
         gm.characters[myVote].regards[id] -= 20;
-        myTalk.NewTalk("40", "40", txt, gm.OnVote);
+        myTalk.NewTalk("40", "41", txt, gm.OnVote);
     }
 
 }

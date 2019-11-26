@@ -37,4 +37,13 @@ SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for eliminat
 [choice]NPC1
 [choice]NPC2
 
+The Professor:SpeakerName, you're up.
 SpeakerName:I cast my vote for TargetName.
+
+SpeakerName:That's everyone. With the votes as they stand...
+SpeakerName:TargetName has been eliminated.
+
+The Professor:That's everyone... it seems we have a tie.
+The Professor: Between SpeakerName.
+The Professor: It falls to me to break the tie. I choose to eliminate...
+The Professor: TargetName.

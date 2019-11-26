@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1086819432088946024}
   - component: {fileID: 1086819432088946025}
   - component: {fileID: 1086819432088946030}
+  - component: {fileID: 8776760915900905255}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Character
@@ -100,6 +101,10 @@ MonoBehaviour:
   myGender: 0
   regards: 
   eliminated: 0
+  voted: 0
+  votedAgainst: 0
+  myTalk: {fileID: 0}
+  txt: {fileID: 0}
   myVote: 0
   voteStrength: 0
 --- !u!61 &1086819432088946025
@@ -142,3 +147,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTalk: {fileID: 0}
   myName: Benedict
+  gm: {fileID: 0}
+--- !u!95 &8776760915900905255
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086819432088946037}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61be45a514a3d7f49a527bf048b1a284, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
