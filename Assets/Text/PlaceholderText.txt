@@ -40,8 +40,8 @@ SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for eliminat
 The Professor:SpeakerName, you're up.
 SpeakerName:I cast my vote for TargetName.
 
-SpeakerName:That's everyone. With the votes as they stand...
-SpeakerName:TargetName has been eliminated.
+The Professor:That's everyone. With the votes as they stand...
+The Professor:TargetName has been eliminated.
 
 The Professor:That's everyone... it seems we have a tie.
 The Professor: Between SpeakerName.

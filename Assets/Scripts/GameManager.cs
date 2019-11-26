@@ -150,16 +150,19 @@ public class GameManager : MonoBehaviour
 
     public void TallyVote() // resolve votes cast
     {
+        locked = true;
         int highestIndex = 0;
+        int mostVotes = -1;
         bool tied = false;
         foreach(Character thisChar in characters)
         {
-            if(thisChar.votedAgainst > characters[highestIndex].votedAgainst)
+            if(thisChar.votedAgainst > mostVotes)
             {
+                mostVotes = thisChar.votedAgainst;
                 highestIndex = thisChar.id;
                 tied = false;
             }
-            else if(thisChar.votedAgainst == characters[highestIndex].votedAgainst)
+            else if(thisChar.votedAgainst == mostVotes)
             {
                 tied = true;
             }
@@ -205,6 +208,7 @@ public class GameManager : MonoBehaviour
             myTalk.variables[1].variableValue = tiedCharList[randomPick].myName;
             myTalk.NewTalk("46", "49", myTalk.txtToParse, OnVoteEnd);
         }
+        locked = false;
     }
 
 }
