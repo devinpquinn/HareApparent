@@ -38,7 +38,7 @@ public class NPC : Character
             {
                 if (regards[i] <= minRegard)
                 {
-                    if (!alreadyTried.Contains(i) && i != this.id && i != partnerID)
+                    if (!alreadyTried.Contains(i) && i != this.id && i != partnerID && !gm.characters[i].eliminated)
                     {
                         minIndex = i;
                         minRegard = regards[i];

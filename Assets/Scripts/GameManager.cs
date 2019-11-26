@@ -67,6 +67,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetVotes()
+    {
+        foreach(Character thisChar in characters)
+        {
+            thisChar.RoundReset();
+        }
+        CalculateVotes();
+        locked = false;
+    }
+
     public void CalculateVotes() // precalculates NPCs' preferred moves before player phase
     {
         foreach(Character currentChar in characters) // each npc
@@ -146,6 +156,7 @@ public class GameManager : MonoBehaviour
     {
         characters[toEliminate].eliminated = true;
         characters[toEliminate].GetComponent<Animator>().SetBool("elim", true);
+        Invoke("ResetVotes", 2f);
     }
 
     public void TallyVote() // resolve votes cast
@@ -208,7 +219,6 @@ public class GameManager : MonoBehaviour
             myTalk.variables[1].variableValue = tiedCharList[randomPick].myName;
             myTalk.NewTalk("46", "49", myTalk.txtToParse, OnVoteEnd);
         }
-        locked = false;
     }
 
 }

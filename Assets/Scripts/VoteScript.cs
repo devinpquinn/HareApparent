@@ -10,7 +10,7 @@ public class VoteScript : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (!myTalk.dialogerObj.activeInHierarchy)
+        if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
         {
             this.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
         }
