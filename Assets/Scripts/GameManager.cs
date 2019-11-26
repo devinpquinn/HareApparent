@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public Character[] characters; // stores all characters in this game
     public RPGTalk myTalk;
+    public GameObject gameOver;
     public bool locked = false; // is control taken away from the player?
-    private int roundNum = 1;
     private int toEliminate;
 
     public UnityEvent OnVote;
@@ -77,25 +77,31 @@ public class GameManager : MonoBehaviour
                 selected.RoundReset();
             }
         }
-        roundNum = 1;
     }
 
     public void ResetVotes() // recalculate votes
     {
-        roundNum++;
-        if(roundNum <= characters.Length - 2) 
+        int remaining = 0;
+        foreach(Character countChar in characters)
         {
-            foreach (Character thisChar in characters)
+            if(!countChar.eliminated)
             {
-                thisChar.RoundReset();
+                remaining++;
             }
-            CalculateVotes();
-            locked = false;
         }
-        else
+        foreach (Character thisChar in characters)
+        {
+            thisChar.RoundReset();
+        }
+        if (remaining <= 2) 
         {
             Debug.Log("Down to final two");
             myTalk.NewTalk("52", "55", myTalk.txtToParse, OnFinalVote);
+        }
+        else
+        {
+            CalculateVotes();
+            locked = false;
         }
     }
 
@@ -204,9 +210,17 @@ public class GameManager : MonoBehaviour
 
     public void Eliminate()
     {
-        characters[toEliminate].eliminated = true;
-        characters[toEliminate].GetComponent<Animator>().SetBool("elim", true);
-        Invoke("ResetVotes", 2f);
+        if(toEliminate == 0)
+        {
+            locked = true;
+            gameOver.gameObject.SetActive(true);
+        }
+        else
+        {
+            characters[toEliminate].eliminated = true;
+            characters[toEliminate].GetComponent<Animator>().SetBool("elim", true);
+            Invoke("ResetVotes", 2f);
+        }
     }
 
     public void TallyVote() // resolve votes cast
