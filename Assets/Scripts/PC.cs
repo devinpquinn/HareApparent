@@ -26,13 +26,18 @@ public class PC : Character
 
     public void OfferDeal()
     {
+        NPC myPartner = gm.characters[talkingTo] as NPC;
+        myTalk.variables[2].variableValue = myPartner.DealLine();
         switch(gm.SetDealOptions(talkingTo))
         {
             case 3:
+                myTalk.NewTalk("68", "72");
                 break;
             case 2:
+                myTalk.NewTalk("74", "77");
                 break;
             case 1:
+                myTalk.NewTalk("79", "81");
                 break;
         }
     }

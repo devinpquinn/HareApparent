@@ -131,6 +131,31 @@ public class NPC : Character
         myTalk.NewTalk("57", "57", txt, gm.OnFinalVote);
     }
 
+    public string DealLine()
+    {
+        int randomLine = Random.Range(0, 6);
+        string myLine = "Who's the target?";
+        switch(randomLine)
+        {
+            case 1:
+                myLine = "Who do you have in mind?";
+                break;
+            case 2:
+                myLine = "Who do you want to go for?";
+                break;
+            case 3:
+                myLine = "For whom?";
+                break;
+            case 4:
+                myLine = "Who should we go for?";
+                break;
+            case 5:
+                myLine = "Sure, who are you thinking of voting for?";
+                break;
+        }
+        return myLine;
+    }
+
     private void OnMouseUp() // begin conversation
     {
         if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
@@ -175,7 +200,7 @@ public class NPC : Character
                     myTalk.variables[2].variableValue = "Hey there, " + gm.characters[0].myName + ".";
                     break;
                 case 12:
-                    myTalk.variables[2].variableValue = "What's on your mind.";
+                    myTalk.variables[2].variableValue = "What's on your mind?";
                     break;
                 case 13:
                     myTalk.variables[2].variableValue = "If I get voted out, I think... I think that means death,  for us at least.";
@@ -206,5 +231,4 @@ public class NPC : Character
     {
         this.transform.localScale = new Vector3(5, 5, 5);
     }
-
 }

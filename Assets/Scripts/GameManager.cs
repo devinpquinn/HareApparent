@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
                     playerChar.OfferDeal();
                 }
                 break;
+            case "voteDeal":
+                break;
         }
     }
 
@@ -120,6 +122,19 @@ public class GameManager : MonoBehaviour
             NextRound();
         }
     }
+
+    public int GetRemaining()
+    {
+        int remaining = 0;
+        foreach(Character countChar in characters)
+        {
+            if(!countChar.eliminated)
+            {
+                remaining++;
+            }
+        }
+        return remaining;
+    } // how many total characters remain in contention?
 
     public void CalculateVotes() // precalculates NPCs' preferred moves before player phase
     {
