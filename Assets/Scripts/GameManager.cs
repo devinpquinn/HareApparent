@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
                 break;
             case "Vote":
                 myTalk.variables[0].variableValue = characters[0].myName;
-                string chosenName = myTalk.variables[2 + choiceNumber].variableValue;
+                string chosenName = myTalk.variables[3 + choiceNumber].variableValue;
                 Character targeted = characters[0];
                 foreach(Character nameCheck in characters)
                 {
@@ -45,11 +45,26 @@ public class GameManager : MonoBehaviour
                         targeted = nameCheck;
                     }
                 }
-                Debug.Log("Player voted for: " + targeted.myName);
+                //Debug.Log("Player voted for: " + targeted.myName);
                 myTalk.variables[1].variableValue = targeted.myName;
                 targeted.votedAgainst++;
                 targeted.regards[0] -= 20;
+                foreach(Character alliedChar in characters)
+                {
+                    if(alliedChar is NPC && !alliedChar.eliminated)
+                    {
+                        NPC alliedNPC = alliedChar as NPC;
+                        if (alliedNPC.myVote == targeted.id);
+                        alliedNPC.regards[0] += 10;
+                    }
+                }
                 myTalk.NewTalk("41", "41");
+                break;
+            case "Home":
+                if(choiceNumber == 0)
+                {
+
+                }
                 break;
         }
     }
@@ -144,7 +159,7 @@ public class GameManager : MonoBehaviour
             Character thisChar = characters[i];
             if(thisChar is NPC && !thisChar.eliminated)
             {
-                myTalk.variables[2 + added].variableValue = thisChar.myName;
+                myTalk.variables[3 + added].variableValue = thisChar.myName;
                 added++;
             }
         }

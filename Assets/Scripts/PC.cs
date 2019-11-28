@@ -19,9 +19,6 @@ public class PC : Character
             case 4:
                 myTalk.NewTalk("19", "25", txt, gm.OnVote);
                 break;
-            case 5:
-                myTalk.NewTalk("10", "17", txt, gm.OnVote);
-                break;
         }
     }
 }

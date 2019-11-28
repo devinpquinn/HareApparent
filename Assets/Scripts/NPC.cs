@@ -67,12 +67,12 @@ public class NPC : Character
             int myTarget = FindDisliked(offers, myPartner.id);
             if(myPartner.CompareVote(myPartner.regards[this.id], myPartner.regards[myTarget], myTarget))
             {
-                Debug.Log(myName + " convinces " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
+                //Debug.Log(myName + " convinces " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
                 break;
             }
             else
             {
-                Debug.Log(myName + " fails to convince " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
+                //Debug.Log(myName + " fails to convince " + myPartner.myName + " to vote for " + gm.characters[myTarget].myName);
             }
             offers++;
         }
@@ -100,13 +100,24 @@ public class NPC : Character
         return false;
     }
 
-    public void CastVote()
+    public void CastVote()// cast vote and increment acccordingly
     {
         gm.characters[myVote].votedAgainst++;
         this.voted = true;
         myTalk.variables[0].variableValue = myName;
         myTalk.variables[1].variableValue = gm.characters[myVote].myName;
         gm.characters[myVote].regards[id] -= 20;
+        foreach (Character alliedChar in gm.characters)
+        {
+            if (alliedChar is NPC && !alliedChar.eliminated)
+            {
+                NPC alliedNPC = alliedChar as NPC;
+                if (alliedNPC.myVote == gm.characters[myVote].id)
+                {
+                    alliedNPC.regards[this.id] += 10; 
+                }
+            }
+        }
         myTalk.NewTalk("40", "41", txt, gm.OnVote);
     }
 

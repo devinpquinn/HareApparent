@@ -972,6 +972,8 @@ MonoBehaviour:
     variableValue: 
   - variableName: TargetName
     variableValue: 
+  - variableName: FlexDialog
+    variableValue: 
   - variableName: NPC1
     variableValue: 
   - variableName: NPC2

@@ -7,14 +7,14 @@ SpeakerName:[question=ReadyToVote]Are you ready to begin the elimination phase?
 
 SpeakerName:All right. Come back and speak to me when you're ready.
 
-SpeakerName:Very well.
-SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
-SpeakerName:[question=Vote]You're up, TargetName. Who do you choose for elimination?
-[choice]NPC1
-[choice]NPC2
-[choice]NPC3
-[choice]NPC4
-[choice]NPC5
+The Professor:And that's that. We proceed to the next round.
+
+
+
+
+
+
+
 
 SpeakerName:Very well.
 SpeakerName:Everyone, it's time to vote! Who do you wish to eliminate from contention?
@@ -58,3 +58,12 @@ SpeakerName:I choose to support TargetName's claim.
 
 The Professor:It seems a decision has been reached.
 The Professor:TargetName is the ultimate winner.
+
+SpeakerName:[question=Home]FlexDialog
+[choice]I'd like to make a deal with you.
+[choice]Who would you like me to vote for?
+[choice]I want to ask your opinion of someone.
+[choice]Goodbye.
+
+SpeakerName:[question=VoteDeal]TargetName
+
