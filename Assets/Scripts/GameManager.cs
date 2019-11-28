@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public RPGTalk myTalk;
     public GameObject gameOver;
     public bool locked = false; // is control taken away from the player?
+    public string myName;
     private int toEliminate;
 
     public UnityEvent OnVote;
@@ -63,7 +64,8 @@ public class GameManager : MonoBehaviour
             case "Home":
                 if(choiceNumber == 0)
                 {
-
+                    PC playerChar = characters[0] as PC;
+                    playerChar.OfferDeal();
                 }
                 break;
         }
@@ -115,8 +117,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            CalculateVotes();
-            locked = false;
+            NextRound();
         }
     }
 
@@ -139,6 +140,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NextRound()
+    {
+        CalculateVotes();
+        myTalk.NewTalk("10", "10", myTalk.txtToParse, null);
+        locked = false;
+    }
+
     public void ShowVotes() // lists chosen votes for debugging
     {
         foreach(Character myChar in characters)
@@ -150,6 +158,21 @@ public class GameManager : MonoBehaviour
             }
         }
     } 
+
+    public int SetDealOptions(int partner)
+    {
+        int added = 0;
+        for (int i = 0; i < characters.Length; i++)
+        {
+            Character thisChar = characters[i];
+            if (thisChar is NPC && !thisChar.eliminated && thisChar.id != partner)
+            {
+                myTalk.variables[3 + added].variableValue = thisChar.myName;
+                added++;
+            }
+        }
+        return added;
+    }
 
     public int SetVoteOptions() // setup remaining characters as dialogue choices
     {
@@ -324,5 +347,27 @@ public class GameManager : MonoBehaviour
         }
         myTalk.NewTalk("59", "60", myTalk.txtToParse, OnFinalResult);
     } // resolve final vote
+
+    private void OnMouseEnter()
+    {
+        if (!myTalk.dialogerObj.activeInHierarchy && !locked)
+        {
+            this.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        this.transform.localScale = new Vector3(5, 5, 5);
+    }
+
+    private void OnMouseUp() // begin conversation
+    {
+        if (!myTalk.dialogerObj.activeInHierarchy && !locked)
+        {
+            myTalk.variables[0].variableValue = myName;
+            myTalk.NewTalk("4", "6");
+        }
+    }
 
 }

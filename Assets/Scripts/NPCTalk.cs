@@ -18,14 +18,14 @@ public class NPCTalk : MonoBehaviour
         if(!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
         {
             myTalk.variables[0].variableValue = myName.ToString();
-            int randomGreeting = Random.Range(1, 16);
+            int randomGreeting = Random.Range(1, 17);
             switch(randomGreeting)
             {
                 case 1:
                     myTalk.variables[2].variableValue = "Hey there.";
                     break;
                 case 2:
-                    myTalk.variables[2].variableValue = "What's up?";
+                    myTalk.variables[2].variableValue = "What's up, " + gm.characters[0].myName + "?";
                     break;
                 case 3:
                     myTalk.variables[2].variableValue = "Hey, how's it going?";
@@ -65,6 +65,9 @@ public class NPCTalk : MonoBehaviour
                     break;
                 case 15:
                     myTalk.variables[2].variableValue = "I'm different from the others... I can just feel it, somehow.";
+                    break;
+                case 16:
+                    myTalk.variables[2].variableValue = "Oh god... why can't I blink?";
                     break;
             }
             myTalk.NewTalk("62", "66");

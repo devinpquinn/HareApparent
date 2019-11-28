@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1086819432088946026}
   - component: {fileID: 1086819432088946024}
   - component: {fileID: 1086819432088946025}
-  - component: {fileID: 1086819432088946030}
   - component: {fileID: 8776760915900905255}
   m_Layer: 0
   m_Name: NPC
@@ -133,21 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34, y: 0.44}
   m_EdgeRadius: 0
---- !u!114 &1086819432088946030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086819432088946037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f578e3a5244a2a84494139b6e1348642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myTalk: {fileID: 0}
-  myName: Benedict
-  gm: {fileID: 0}
 --- !u!95 &8776760915900905255
 Animator:
   serializedVersion: 3

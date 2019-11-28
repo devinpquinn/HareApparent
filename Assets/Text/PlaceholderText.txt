@@ -65,5 +65,17 @@ SpeakerName:[question=Home]FlexDialog
 [choice]I want to ask your opinion of someone.
 [choice]Goodbye.
 
-SpeakerName:[question=VoteDeal]TargetName
+SpeakerName:[question=VoteDeal]FlexDialog
+[choice]NPC1
+[choice]NPC2
+[choice]NPC3
+[choice]Never mind.
 
+SpeakerName:[question=VoteDeal]FlexDialog
+[choice]NPC1
+[choice]NPC2
+[choice]Never mind.
+
+SpeakerName:[question=VoteDeal]FlexDialog
+[choice]NPC1
+[choice]Never mind.

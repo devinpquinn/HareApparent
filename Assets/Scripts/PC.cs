@@ -5,6 +5,8 @@ using UnityEngine;
 public class PC : Character
 {
 
+    public int talkingTo;
+
     public void PlayerVote() // player casts vote
     {
         voted = true;
@@ -18,6 +20,19 @@ public class PC : Character
                 break;
             case 4:
                 myTalk.NewTalk("19", "25", txt, gm.OnVote);
+                break;
+        }
+    }
+
+    public void OfferDeal()
+    {
+        switch(gm.SetDealOptions(talkingTo))
+        {
+            case 3:
+                break;
+            case 2:
+                break;
+            case 1:
                 break;
         }
     }
