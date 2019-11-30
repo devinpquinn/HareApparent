@@ -395,6 +395,32 @@ public class NPC : Character
         return response;
     }
 
+    public string SameIdeaLine()
+    {
+        int randomLine = Random.Range(0, 6);
+        string myLine = "That was already my plan. Great minds think alike.";
+        switch (randomLine)
+
+        {
+            case 1:
+                myLine = "I'm already there. Done and done.";
+                break;
+            case 2:
+                myLine = "Yep, that's the plan. Glad you're on board.";
+                break;
+            case 3:
+                myLine = "That's what I was thinking.";
+                break;
+            case 4:
+                myLine = "We're on the same page here.";
+                break;
+            case 5:
+                myLine = "You in? Heck yeah, let's do it.";
+                break;
+        }
+        return myLine;
+    }
+
     private void OnMouseUp() // begin conversation
     {
         if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)

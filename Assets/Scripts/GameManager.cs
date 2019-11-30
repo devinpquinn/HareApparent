@@ -103,6 +103,18 @@ public class GameManager : MonoBehaviour
             case "VoteDeal":
                 string targetName = myTalk.variables[3 + choiceNumber].variableValue;
                 int targetCharID = FindByName(targetName).id;
+                int NPCThinking = partnerNPC.myVote;
+                if(NPCThinking == 0)
+                {
+                    NPCThinking = partnerNPC.FindDisliked(0, 0);
+                }
+                if (targetCharID == NPCThinking)
+                {
+                    partnerNPC.CompareVote(partnerNPC.regards[0], partnerNPC.regards[targetCharID], targetCharID);
+                    myTalk.variables[2].variableValue = partnerNPC.SameIdeaLine();
+                    myTalk.NewTalk("126", "128");
+                    break;
+                }
                 if (partnerNPC.CompareVote(partnerNPC.regards[0], partnerNPC.regards[targetCharID], targetCharID))
                 {
                     myTalk.NewTalk("83", "85");
