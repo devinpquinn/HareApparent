@@ -325,7 +325,7 @@ public class NPC : Character
             }
             else if (randomKey == 2)
             {
-                response = "Can you do me a favor? Hit Escape, exit fullscreen mode if you're in it. You should be able to see a list of GameObjects on the left. Find the one that says 'NPC" + targetID + "', click on it, and press Delete. 'Preciate it.";
+                response = "Can you do me a favor? Hit Escape and delete the GameObject labelled 'NPC " + targetID.ToString() + "'. 'Preciate it.";
             }
             else
             {
