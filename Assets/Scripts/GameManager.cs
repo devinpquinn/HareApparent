@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void OnMadeChoice(string questionID, int choiceNumber)
     {
+        PC myPlayer = characters[0] as PC;
+        NPC partnerNPC = characters[myPlayer.talkingTo] as NPC;
         switch (questionID)
         {
             case "ReadyToVote":
@@ -64,11 +66,58 @@ public class GameManager : MonoBehaviour
             case "Home":
                 if(choiceNumber == 0)
                 {
-                    PC playerChar = characters[0] as PC;
-                    playerChar.OfferDeal();
+                    myPlayer.OfferDeal();
                 }
                 break;
-            case "voteDeal":
+            case "VoteDeal":
+                string targetName = myTalk.variables[3 + choiceNumber].variableValue;
+                int targetCharID = FindByName(targetName).id;
+                if (partnerNPC.CompareVote(partnerNPC.regards[0], partnerNPC.regards[targetCharID], targetCharID))
+                {
+                    myTalk.NewTalk("83", "85");
+                }
+                else
+                {
+                    myTalk.NewTalk("87", "89");
+                }
+                break;
+            case "DealAccepted":
+                if(choiceNumber == 0)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.DealLine();
+                    if (GetRemaining() == 5)
+                    {
+                        myTalk.NewTalk("68", "72");
+                    }
+                    else if (GetRemaining() == 4)
+                    {
+                        myTalk.NewTalk("74", "77");
+                    }
+                    else if (GetRemaining() == 3)
+                    {
+                        myTalk.NewTalk("79", "81");
+                    }
+                    myTalk.variables[2].variableValue = partnerNPC.GreetingLine();
+                    myTalk.NewTalk("62", "66");
+                }
+                break;
+            case "DealRejected":
+                if(choiceNumber == 0)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.DealLine();
+                    if (GetRemaining() == 5)
+                    {
+                        myTalk.NewTalk("68", "72");
+                    }
+                    else if (GetRemaining() == 4)
+                    {
+                        myTalk.NewTalk("74", "77");
+                    }
+                    else if (GetRemaining() == 3)
+                    {
+                        myTalk.NewTalk("79", "81");
+                    }
+                }
                 break;
         }
     }
@@ -173,6 +222,19 @@ public class GameManager : MonoBehaviour
             }
         }
     } 
+
+    public Character FindByName(string charName)
+    {
+        Character targeted = characters[0];
+        foreach (Character nameCheck in characters)
+        {
+            if (nameCheck.myName.Equals(charName))
+            {
+                targeted = nameCheck;
+            }
+        }
+        return targeted;
+    } // find a character by their name
 
     public int SetDealOptions(int partner)
     {

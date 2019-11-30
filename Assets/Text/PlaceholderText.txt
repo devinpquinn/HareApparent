@@ -79,3 +79,11 @@ SpeakerName:[question=VoteDeal]FlexDialog
 SpeakerName:[question=VoteDeal]FlexDialog
 [choice]NPC1
 [choice]Never mind.
+
+SpeakerName:[question=DealAccepted]All right. You've got yourself a deal.
+[choice]Awesome sauce.
+[choice]Cool. That's all for now.
+
+SpeakerName:[question=DealRejected]Sorry, but I've got a different play in mind.
+[choice]Fine. Maybe we can agree on someone else?
+[choice]Ugh. Talk to you later, then.
