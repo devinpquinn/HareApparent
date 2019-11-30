@@ -286,6 +286,115 @@ public class NPC : Character
         return myLine;
     }
 
+    public string OpinionsLine()
+    {
+        int randomLine = Random.Range(0, 6);
+        string myLine = "Ok, who do you want to know about?";
+        switch (randomLine)
+
+        {
+            case 1:
+                myLine = "Sure, who?";
+                break;
+            case 2:
+                myLine = "Whomstve?";
+                break;
+            case 3:
+                myLine = "Aw hell yeah. Tea is about to be spilled.";
+                break;
+            case 4:
+                myLine = "Oh, absolutely. I've been waiting to talk mad sh*t about these weirdos.";
+                break;
+            case 5:
+                myLine = "Oh my god, where do I even start?";
+                break;
+        }
+        return myLine;
+    }
+
+    public string MyOpinionLine(int targetID)
+    {
+        string response = "Meh.";
+        int randomKey = Random.Range(1, 4);
+        int myOpinion = regards[targetID];
+        if(myOpinion < -20)
+        {
+            if(randomKey == 1)
+            {
+                response = gm.characters[targetID].GetPronoun(0, true) + " can go delete " + gm.characters[targetID].GetPronoun(1, false) + "self for all I care.";
+            }
+            else if (randomKey == 2)
+            {
+                response = "Can you do me a favor? Hit Escape, exit fullscreen mode if you're in it. You should be able to see a list of GameObjects on the left. Find the one that says 'NPC" + targetID + "', click on it, and press Delete. 'Preciate it.";
+            }
+            else
+            {
+                response = "The day " + gm.characters[targetID].GetPronoun(0, false) + " gets voted out will be the happiest day of my life. Not that I can remember any other days.";
+            }
+        }
+        else if (myOpinion < -5)
+        {
+            if (randomKey == 1)
+            {
+                response = "Not a fan.";
+            }
+            else if (randomKey == 2)
+            {
+                response = gm.characters[targetID].GetPronoun(0, true) + "'s got some work to do to get back in my good books.";
+            }
+            else
+            {
+                response = "Let's just say I'm not the president of " + gm.characters[targetID].GetPronoun(2, false) + " fan club.";
+            }
+        }
+        else if (myOpinion < 6)
+        {
+            if (randomKey == 1)
+            {
+                response = "Still not sure about " + gm.characters[targetID].GetPronoun(1, false) + ".";
+            }
+            else if (randomKey == 2)
+            {
+                response = "Hmm... I might have to get back to you on that one.";
+            }
+            else
+            {
+                response = "I'm adopting a sort of 'wait and see' policy with " + gm.characters[targetID].GetPronoun(1, false) + ".";
+            }
+        }
+        else if (myOpinion < 21)
+        {
+            if (randomKey == 1)
+            {
+                response = "Seems pretty trustworthy, actually, as far as I can tell.";
+            }
+            else if (randomKey == 2)
+            {
+                response = "No complaints here.";
+            }
+            else
+            {
+                response = "I'm actually enjoying working with " + gm.characters[targetID].GetPronoun(1, false) + ", so far at least.";
+            }
+        }
+        else
+        {
+            if (randomKey == 1)
+            {
+                response = "I trust " + gm.characters[targetID].GetPronoun(1, false) + ". Plain and simple.";
+            }
+            else if (randomKey == 2)
+            {
+                response = "Oh, " + gm.characters[targetID].GetPronoun(0, false) + "'s great. We're planning on grabbing drinks after this.";
+            }
+            else
+            {
+                response = "I genuinely like and respect " + gm.characters[targetID].GetPronoun(1, false) + ". I think we can make it to the end together.";
+            }
+        }
+        return response;
+    }
+
     private void OnMouseUp() // begin conversation
     {
         if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)

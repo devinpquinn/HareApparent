@@ -102,3 +102,23 @@ SpeakerName:[question=BackHomeOrExit]Bummer. I think we would have made a great 
 [choice]Goodbye.
 
 SpeakerName:FlexDialog
+
+SpeakerName:[question=Opinions]FlexDialog
+[choice]NPC1
+[choice]NPC2
+[choice]NPC3
+[choice]Let's talk about something else.
+
+SpeakerName:[question=Opinions]FlexDialog
+[choice]NPC1
+[choice]NPC2
+[choice]Let's talk about something else.
+
+SpeakerName:[question=Opinions]FlexDialog
+[choice]NPC1
+[choice]Let's talk about something else.
+
+SpeakerName:[question=OpinionGiven]FlexDialog
+[choice]I want to ask your thoughts on someone else, too.
+[choice]Enough chit-chat, let's get down to business.
+[choice]All right, thanks for talking. I gotta go.

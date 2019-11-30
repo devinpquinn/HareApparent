@@ -78,6 +78,22 @@ public class GameManager : MonoBehaviour
                     myTalk.variables[1].variableValue = characters[partnerTarget].myName;
                     myTalk.NewTalk("91", "94");
                 }
+                else if(choiceNumber == 2)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.OpinionsLine();
+                    switch (SetDealOptions(partnerNPC.id))
+                    {
+                        case 3:
+                            myTalk.NewTalk("106", "110");
+                            break;
+                        case 2:
+                            myTalk.NewTalk("112", "115");
+                            break;
+                        case 1:
+                            myTalk.NewTalk("117", "119");
+                            break;
+                    }
+                }
                 else if (choiceNumber == 3)
                 {
                     myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
@@ -94,6 +110,11 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     myTalk.NewTalk("87", "89");
+                }
+                if(choiceNumber == GetRemaining() - 2)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.BackToMenuLine();
+                    myTalk.NewTalk("62", "66");
                 }
                 break;
             case "BackHomeOrExit":
@@ -124,6 +145,51 @@ public class GameManager : MonoBehaviour
                     {
                         myTalk.NewTalk("79", "81");
                     }
+                }
+                else
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
+                    myTalk.NewTalk("104", "104");
+                }
+                break;
+            case "Opinions":
+                if(choiceNumber != GetRemaining() - 2)
+                {
+                    int askedID = FindByName(myTalk.variables[3 + choiceNumber].variableValue).id;
+                    myTalk.variables[2].variableValue = partnerNPC.MyOpinionLine(askedID);
+                    myTalk.NewTalk("121", "124");
+                }
+                else
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.BackToMenuLine();
+                    myTalk.NewTalk("62", "66");
+                }
+                break;
+            case "OpinionGiven":
+                if(choiceNumber == 0)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.OpinionsLine();
+                    switch (SetDealOptions(partnerNPC.id))
+                    {
+                        case 3:
+                            myTalk.NewTalk("106", "110");
+                            break;
+                        case 2:
+                            myTalk.NewTalk("112", "115");
+                            break;
+                        case 1:
+                            myTalk.NewTalk("117", "119");
+                            break;
+                    }
+                }
+                else if (choiceNumber == 1)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.BackToMenuLine();
+                    myTalk.NewTalk("62", "66");
+                }
+                else {
+                    myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
+                    myTalk.NewTalk("104", "104");
                 }
                 break;
         }
