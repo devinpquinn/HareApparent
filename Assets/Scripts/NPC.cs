@@ -214,6 +214,78 @@ public class NPC : Character
         return myLine;
     }
 
+    public string BackToMenuLine()
+    {
+        int randomLine = Random.Range(0, 6);
+        string myLine = "Sure.";
+        switch (randomLine)
+        {
+            case 1:
+                myLine = "All right.";
+                break;
+            case 2:
+                myLine = "All right, what's on your mind?";
+                break;
+            case 3:
+                myLine = "I'm all ears.";
+                break;
+            case 4:
+                myLine = "Go ahead, then.";
+                break;
+            case 5:
+                myLine = "Shoot.";
+
+                break;
+        }
+        return myLine;
+    }
+
+    public string GoodbyeLine()
+    {
+        int randomLine = Random.Range(0, 13);
+        string myLine = "Bye.";
+        switch (randomLine)
+        {
+            case 1:
+                myLine = "Take care.";
+                break;
+            case 2:
+                myLine = "See you in the next round, I hope.";
+                break;
+            case 3:
+                myLine = "Watch the skies.";
+                break;
+            case 4:
+                myLine = "Peace.";
+                break;
+            case 5:
+                myLine = "So long.";
+                break;
+            case 6:
+                myLine = "Catch you later.";
+                break;
+            case 7:
+                myLine = "See you around.";
+                break;
+            case 8:
+                myLine = "Smell you later. Heh... I don't think I have a sense of smell.";
+                break;
+            case 9:
+                myLine = "You're leaving? Oh... Okay.";
+                break;
+            case 10:
+                myLine = "Don't go... None of the others talk to me.";
+                break;
+            case 11:
+                myLine = "Ok... Please don't vote me out. I- I don't want to die.";
+                break;
+            case 12:
+                myLine = "Fine, go talk to one of your <i>real</i> allies.";
+                break;
+        }
+        return myLine;
+    }
+
     private void OnMouseUp() // begin conversation
     {
         if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)

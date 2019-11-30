@@ -80,10 +80,25 @@ SpeakerName:[question=VoteDeal]FlexDialog
 [choice]NPC1
 [choice]Never mind.
 
-SpeakerName:[question=DealAccepted]All right. You've got yourself a deal.
-[choice]Awesome sauce.
+SpeakerName:[question=BackHomeOrExit]All right. You've got yourself a deal.
+[choice]Awesome sauce. I have something else I wanted to talk about, too.
 [choice]Cool. That's all for now.
 
 SpeakerName:[question=DealRejected]Sorry, but I've got a different play in mind.
 [choice]Fine. Maybe we can agree on someone else?
 [choice]Ugh. Talk to you later, then.
+
+SpeakerName:[question=OfferedDeal]I think we should take out TargetName. Interested?
+[choice]Count me in.[newtalk start=96 break=98]
+[choice]Sorry, I can't do that.[newtalk start=100 break=102]
+[choice][Rapidly backpedal away, maintaing unblinking eye contact]
+
+SpeakerName:[question=BackHomeOrExit]Great! I'll hold you to that.
+[choice]Let's talk about something else.
+[choice]Adios, amigo.
+
+SpeakerName:[question=BackHomeOrExit]Bummer. I think we would have made a great team.
+[choice]I think we should talk about something else.
+[choice]Goodbye.
+
+SpeakerName:FlexDialog

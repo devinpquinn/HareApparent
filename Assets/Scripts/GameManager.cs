@@ -68,6 +68,21 @@ public class GameManager : MonoBehaviour
                 {
                     myPlayer.OfferDeal();
                 }
+                else if (choiceNumber == 1)
+                {
+                    int partnerTarget = partnerNPC.myVote;
+                    if(partnerTarget == 0)
+                    {
+                        partnerTarget = partnerNPC.FindDisliked(0, 0);
+                    }
+                    myTalk.variables[1].variableValue = characters[partnerTarget].myName;
+                    myTalk.NewTalk("91", "94");
+                }
+                else if (choiceNumber == 3)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
+                    myTalk.NewTalk("104", "104");
+                }
                 break;
             case "VoteDeal":
                 string targetName = myTalk.variables[3 + choiceNumber].variableValue;
@@ -81,24 +96,16 @@ public class GameManager : MonoBehaviour
                     myTalk.NewTalk("87", "89");
                 }
                 break;
-            case "DealAccepted":
+            case "BackHomeOrExit":
                 if(choiceNumber == 0)
                 {
-                    myTalk.variables[2].variableValue = partnerNPC.DealLine();
-                    if (GetRemaining() == 5)
-                    {
-                        myTalk.NewTalk("68", "72");
-                    }
-                    else if (GetRemaining() == 4)
-                    {
-                        myTalk.NewTalk("74", "77");
-                    }
-                    else if (GetRemaining() == 3)
-                    {
-                        myTalk.NewTalk("79", "81");
-                    }
-                    myTalk.variables[2].variableValue = partnerNPC.GreetingLine();
+                    myTalk.variables[2].variableValue = partnerNPC.BackToMenuLine();
                     myTalk.NewTalk("62", "66");
+                }
+                else
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
+                    myTalk.NewTalk("104", "104");
                 }
                 break;
             case "DealRejected":
