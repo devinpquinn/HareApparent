@@ -144,7 +144,7 @@ public class NPC : Character
                 myLine = "Who do you want to go for?";
                 break;
             case 3:
-                myLine = "For whom?";
+                myLine = "All right, who do you want to vote for?";
                 break;
             case 4:
                 myLine = "Who should we go for?";

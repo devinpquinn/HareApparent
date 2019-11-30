@@ -2091,8 +2091,10 @@ public class RPGTalk : MonoBehaviour {
                     showWithDialog [i].SetActive (false);
                 }
             }
-
-            callback.Invoke();
+            if(callback != null)
+            {
+                callback.Invoke();
+            }
 
 
             //if we want to go back to the original talk lines
