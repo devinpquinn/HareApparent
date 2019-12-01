@@ -91,7 +91,7 @@ SpeakerName:[question=DealRejected]Sorry, but I've got a different play in mind.
 SpeakerName:[question=OfferedDeal]I think we should take out TargetName. Interested?
 [choice]Count me in.[newtalk start=96 break=98]
 [choice]Sorry, I can't do that.[newtalk start=100 break=102]
-[choice][Rapidly backpedal away, maintaing unblinking eye contact]
+[choice][Rapidly backpedal away, maintaining unblinking eye contact]
 
 SpeakerName:[question=BackHomeOrExit]Great! I'll hold you to that.
 [choice]Let's talk about something else.

@@ -129,6 +129,13 @@ public class GameManager : MonoBehaviour
                     myTalk.NewTalk("62", "66");
                 }
                 break;
+            case "OfferedDeal":
+                if(choiceNumber == 2)
+                {
+                    myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
+                    myTalk.NewTalk("104", "104");
+                }
+                break;
             case "BackHomeOrExit":
                 if(choiceNumber == 0)
                 {
