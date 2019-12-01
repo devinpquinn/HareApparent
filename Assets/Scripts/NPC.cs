@@ -6,6 +6,7 @@ public class NPC : Character
 {
     public int myVote; // id of current vote target
     public int voteStrength; // point strength of current vote deal
+    private bool selectable = false;
 
     public void RandomizeAttitude() // randomize starting attitudes toward other characters
     {
@@ -254,7 +255,7 @@ public class NPC : Character
                 myLine = "See you in the next round, I hope.";
                 break;
             case 3:
-                myLine = "Watch the skies, traveller.";
+                myLine = "Watch the skies, traveler.";
                 break;
             case 4:
                 myLine = "Peace.";
@@ -424,7 +425,7 @@ public class NPC : Character
 
     private void OnMouseUp() // begin conversation
     {
-        if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
+        if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked && selectable)
         {
             myTalk.variables[0].variableValue = myName.ToString();
             PC playerChar = gm.characters[0] as PC;
@@ -438,12 +439,14 @@ public class NPC : Character
     {
         if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
         {
+            selectable = true;
             this.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
         }
     }
 
     private void OnMouseExit()
     {
+        selectable = false;
         this.transform.localScale = new Vector3(5, 5, 5);
     }
 }

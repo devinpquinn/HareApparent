@@ -130,6 +130,14 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "OfferedDeal":
+                if(choiceNumber == 0)
+                {
+                    int votingTarget = partnerNPC.myVote;
+                    if(votingTarget != 0)
+                    {
+                        partnerNPC.CompareVote(partnerNPC.regards[0], partnerNPC.regards[votingTarget], votingTarget);
+                    }
+                }
                 if(choiceNumber == 2)
                 {
                     myTalk.variables[2].variableValue = partnerNPC.GoodbyeLine();
