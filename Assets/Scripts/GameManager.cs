@@ -485,7 +485,7 @@ public class GameManager : MonoBehaviour
                 }   
                 numTied--;
             }
-            int randomPick = Random.Range(0, tiedCharList.Count);
+            int randomPick = Random.Range(0, tiedCharList.Count + 1);
             toEliminate = tiedCharList[randomPick].id;
             myTalk.variables[1].variableValue = tiedCharList[randomPick].myName;
             myTalk.NewTalk("46", "49", myTalk.txtToParse, OnVoteEnd);
