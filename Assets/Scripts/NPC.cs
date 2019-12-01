@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : Character
 {
     public int myVote; // id of current vote target
     public int voteStrength; // point strength of current vote deal
     private bool selectable = false;
+    public GameObject tooltip;
+
+    private new void Start()
+    {
+        base.Start();
+        tooltip.SetActive(false);
+        tooltip.gameObject.transform.GetChild(0).GetComponent<Text>().text = myName;
+    }
 
     public void RandomizeAttitude() // randomize starting attitudes toward other characters
     {
@@ -437,8 +446,9 @@ public class NPC : Character
 
     private void OnMouseEnter()
     {
-        if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked)
+        if (!myTalk.dialogerObj.activeInHierarchy && !gm.locked && !eliminated)
         {
+            tooltip.SetActive(true);
             selectable = true;
             this.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
         }
@@ -446,6 +456,7 @@ public class NPC : Character
 
     private void OnMouseExit()
     {
+        tooltip.SetActive(false);
         selectable = false;
         this.transform.localScale = new Vector3(5, 5, 5);
     }

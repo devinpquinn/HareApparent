@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
                         alliedNPC.regards[0] += 10;
                     }
                 }
+                Debug.Log("Player votes for " + targeted.myName);
                 myTalk.NewTalk("41", "41", myTalk.txtToParse, OnVote);
                 break;
             case "Home":

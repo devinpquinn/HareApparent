@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     public RPGTalk myTalk;
     public TextAsset txt;
 
-    private void Start()
+    public void Start()
     {
         myTalk = gm.myTalk;
         txt = gm.myTalk.txtToParse;
