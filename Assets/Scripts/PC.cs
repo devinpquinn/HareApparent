@@ -13,10 +13,10 @@ public class PC : Character
         switch(gm.SetVoteOptions())
         {
             case 2:
-                myTalk.NewTalk("34", "38", txt, gm.OnVote);
+                myTalk.NewTalk("34", "38", txt, null);
                 break;
             case 3:
-                myTalk.NewTalk("27", "32", txt, gm.OnVote);
+                myTalk.NewTalk("27", "32", txt, null);
                 break;
             case 4:
                 myTalk.NewTalk("19", "25", txt, null);

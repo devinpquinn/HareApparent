@@ -118,6 +118,7 @@ public class NPC : Character
                 }
             }
         }
+        Debug.Log(myName + " votes for " + gm.characters[myVote].myName);
         myTalk.NewTalk("40", "41", txt, gm.OnVote);
     }
 

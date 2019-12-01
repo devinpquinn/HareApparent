@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -361,6 +362,16 @@ public class GameManager : MonoBehaviour
     {
         locked = true;
         gameOver.SetActive(true);
+        if(toEliminate == 0 && GetRemaining() == 2)
+        {
+            gameOver.transform.GetChild(0).GetComponent<Text>().text = "Congratulations";
+            gameOver.transform.GetChild(1).GetComponent<Text>().text = "You are the Champion";
+        }
+        else
+        {
+            gameOver.transform.GetChild(0).GetComponent<Text>().text = "Game Over";
+            gameOver.transform.GetChild(1).GetComponent<Text>().text = "You finished #" + GetRemaining();
+        }
     } // finish game
 
     public void ConductFinalVote() // conduct final vote
@@ -389,10 +400,11 @@ public class GameManager : MonoBehaviour
     public void ConductVote() // cycle through each character's vote
     {
         bool doneVoting = true;
-        foreach(Character selectedChar in characters)
+        for(int i = 0; i < characters.Length; i++)
         {
+            Character selectedChar = characters[i];
             doneVoting = true;
-            if(!selectedChar.eliminated && !selectedChar.voted)
+            if (!selectedChar.eliminated && !selectedChar.voted)
             {
                 doneVoting = false;
                 myTalk.variables[1].variableValue = selectedChar.myName;
@@ -485,7 +497,7 @@ public class GameManager : MonoBehaviour
                 }   
                 numTied--;
             }
-            int randomPick = Random.Range(0, tiedCharList.Count + 1);
+            int randomPick = Random.Range(0, (tiedCharList.Count + 1));
             toEliminate = tiedCharList[randomPick].id;
             myTalk.variables[1].variableValue = tiedCharList[randomPick].myName;
             myTalk.NewTalk("46", "49", myTalk.txtToParse, OnVoteEnd);
