@@ -102,8 +102,8 @@ public class NPC : Character
 
     public void CastVote()// cast vote and increment acccordingly
     {
+        voted = true;
         gm.characters[myVote].votedAgainst++;
-        this.voted = true;
         myTalk.variables[0].variableValue = myName;
         myTalk.variables[1].variableValue = gm.characters[myVote].myName;
         gm.characters[myVote].regards[id] -= 20;
@@ -253,7 +253,7 @@ public class NPC : Character
                 myLine = "See you in the next round, I hope.";
                 break;
             case 3:
-                myLine = "Watch the skies.";
+                myLine = "Watch the skies, traveller.";
                 break;
             case 4:
                 myLine = "Peace.";

@@ -19,7 +19,7 @@ public class PC : Character
                 myTalk.NewTalk("27", "32", txt, gm.OnVote);
                 break;
             case 4:
-                myTalk.NewTalk("19", "25", txt, gm.OnVote);
+                myTalk.NewTalk("19", "25", txt, null);
                 break;
         }
     }

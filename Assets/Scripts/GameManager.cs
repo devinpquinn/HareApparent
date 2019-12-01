@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
                         targeted = nameCheck;
                     }
                 }
-                //Debug.Log("Player voted for: " + targeted.myName);
                 myTalk.variables[1].variableValue = targeted.myName;
                 targeted.votedAgainst++;
                 targeted.regards[0] -= 20;
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour
                         alliedNPC.regards[0] += 10;
                     }
                 }
-                myTalk.NewTalk("41", "41");
+                myTalk.NewTalk("41", "41", myTalk.txtToParse, OnVote);
                 break;
             case "Home":
                 if(choiceNumber == 0)
@@ -392,6 +391,7 @@ public class GameManager : MonoBehaviour
         bool doneVoting = true;
         foreach(Character selectedChar in characters)
         {
+            doneVoting = true;
             if(!selectedChar.eliminated && !selectedChar.voted)
             {
                 doneVoting = false;
