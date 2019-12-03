@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public RPGTalk myTalk;
     public GameObject gameOver;
     public bool locked = false; // is control taken away from the player?
+    public bool fullGame = true;
     public string myName;
     private int toEliminate;
 
@@ -20,10 +21,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        locked = true;
         myTalk.OnMadeChoice += OnMadeChoice;
         SetupCharacters();
         CalculateVotes();
         ShowVotes();
+        Invoke("StartGame", 1f);
     }
 
     private void OnMadeChoice(string questionID, int choiceNumber)
@@ -365,6 +368,15 @@ public class GameManager : MonoBehaviour
             }
         }
         return added;
+    }
+
+    public void StartGame()
+    {
+        if(fullGame)
+        {
+            myTalk.NewTalk("130", "137");
+        }
+        locked = false;
     }
 
     public void EndGame()

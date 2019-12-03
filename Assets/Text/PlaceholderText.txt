@@ -126,3 +126,12 @@ SpeakerName:[question=OpinionGiven]FlexDialog
 SpeakerName:[question=BackHomeOrExit]FlexDialog
 [choice]I have something else I wanted to discuss.
 [choice]Bye.
+
+The Professor:Welcome to the Hare Apparent prototype! You can click or press Space to progress the dialogue.
+The Professor:Before you jump right in, let me give you a quick overview of how this works. Feel free to skip this if you've played the prototype before.
+The Professor:Hare Apparent is a game of social elimination. You'll make alliances, propose deals, form bonds, and make risky moves.
+The Professor:The game is organized into a series of rounds. Each round, you can take as much time as you want to talk and make plans.
+The Professor:Rounds conclude with a vote, where the remaining candidates collectively choose one of their own to eliminate.
+The Professor:I will break any tied votes. Rounds proceed until there are only two candidates remaining.
+The Professor:The eliminated candidates will choose the winner from the final two, so try not to make too many enemies!
+The Professor:Enough chit-chat from me. Go ahead, go talk with the others. Come back to me when you're ready to vote.
