@@ -374,7 +374,7 @@ public class GameManager : MonoBehaviour
     {
         if(fullGame)
         {
-            myTalk.NewTalk("130", "137");
+            myTalk.NewTalk("130", "138");
         }
         locked = false;
     }
