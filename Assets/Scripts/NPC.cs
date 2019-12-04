@@ -90,6 +90,10 @@ public class NPC : Character
 
     public bool CompareVote(int proposer, int target, int targetID) // function for comparing various votes
     {
+        if(gm.characters[targetID].eliminated == true)
+        {
+            return false;
+        }
         int str = proposer - target;
         if(str > voteStrength)
         {

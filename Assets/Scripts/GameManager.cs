@@ -23,9 +23,6 @@ public class GameManager : MonoBehaviour
     {
         locked = true;
         myTalk.OnMadeChoice += OnMadeChoice;
-        SetupCharacters();
-        CalculateVotes();
-        ShowVotes();
         Invoke("StartGame", 1f);
     }
 
@@ -253,14 +250,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetVotes() // recalculate votes
     {
-        int remaining = 0;
-        foreach(Character countChar in characters)
-        {
-            if(!countChar.eliminated)
-            {
-                remaining++;
-            }
-        }
+        int remaining = GetRemaining();
         foreach (Character thisChar in characters)
         {
             thisChar.RoundReset();
@@ -306,6 +296,7 @@ public class GameManager : MonoBehaviour
                 }
             } 
         }
+        ShowVotes();
     }
 
     public void NextRound()
@@ -372,7 +363,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        if(fullGame)
+        SetupCharacters();
+        CalculateVotes();
+        if (fullGame)
         {
             myTalk.NewTalk("130", "138");
         }
